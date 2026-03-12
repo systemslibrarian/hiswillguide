@@ -12,6 +12,8 @@
   --accent-bg: rgba(184, 134, 11, 0.16);
   --accent-border: rgba(184, 134, 11, 0.28);
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  --focus-ring: 2px solid var(--gold);
+  --min-tap: 44px;
 }
 
 :root[data-theme='light'] {
@@ -38,15 +40,19 @@ html {
   scroll-behavior: smooth;
   overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
+  min-height: 100dvh;
   overflow-x: hidden;
   background: var(--bg);
   color: var(--text);
   font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.9375rem, 2.5vw, 1rem);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -68,21 +74,41 @@ a {
 
 button {
   border: 0;
+  cursor: pointer;
 }
 
 img {
   max-width: 100%;
+  height: auto;
   display: block;
 }
 
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 :focus-visible {
-  outline: 2px solid var(--gold);
+  outline: var(--focus-ring);
   outline-offset: 3px;
   border-radius: 10px;
 }
 
-button, a, textarea {
+button, a, textarea, [role="checkbox"] {
   touch-action: manipulation;
+}
+
+/* Ensure all interactive elements have 44x44 minimum tap target */
+button, a, [role="checkbox"] {
+  min-height: var(--min-tap);
 }
 
 .skip-link {
@@ -94,6 +120,7 @@ button, a, textarea {
   border-radius: 10px;
   background: var(--text);
   color: var(--bg);
+  font-weight: 700;
 }
 
 .skip-link:focus {
@@ -103,6 +130,7 @@ button, a, textarea {
 .site-shell {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .background-glow {
@@ -141,14 +169,16 @@ button, a, textarea {
   border-radius: 16px;
   background: rgba(184, 134, 11, 0.1);
   color: var(--text);
+  font-size: 0.95rem;
 }
 
 .inapp-banner button {
-  min-width: 44px;
-  min-height: 44px;
+  min-width: var(--min-tap);
+  min-height: var(--min-tap);
   border-radius: 999px;
   background: rgba(255,255,255,0.08);
   color: var(--text);
+  flex-shrink: 0;
 }
 
 .site-header {
@@ -158,32 +188,33 @@ button, a, textarea {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 18px;
+  gap: 12px;
   margin-bottom: 22px;
-  padding: 14px 16px;
+  padding: 10px 14px;
   border: 1px solid var(--border);
   border-radius: 18px;
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   background: rgba(var(--bg-rgb), 0.72);
 }
 
 .site-brand {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   min-width: 0;
 }
 
 .site-brand__mark,
 .hero-mark {
-  width: 58px;
-  height: 58px;
+  width: 48px;
+  height: 48px;
   border-radius: 999px;
   border: 1px solid var(--border);
   display: grid;
   flex: 0 0 auto;
   place-items: center;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   background: rgba(255,255,255,0.04);
 }
 
@@ -192,9 +223,13 @@ button, a, textarea {
 .site-tag {
   display: block;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
-  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  font-size: 0.65rem;
   color: var(--muted-2);
+}
+
+.site-brand__sub {
+  display: none;
 }
 
 .desktop-nav {
@@ -209,6 +244,10 @@ button, a, textarea {
 
 .site-nav a {
   color: var(--muted);
+  padding: 8px 4px;
+  min-height: var(--min-tap);
+  display: inline-flex;
+  align-items: center;
 }
 
 .site-nav a:hover {
@@ -218,12 +257,12 @@ button, a, textarea {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .icon-button {
-  min-width: 44px;
-  min-height: 44px;
+  min-width: var(--min-tap);
+  min-height: var(--min-tap);
   border-radius: 12px;
   display: inline-flex;
   align-items: center;
@@ -232,6 +271,7 @@ button, a, textarea {
   border: 1px solid var(--border);
   color: var(--text);
   cursor: pointer;
+  font-size: 1.1rem;
 }
 
 .mobile-menu-button {
@@ -266,6 +306,8 @@ button, a, textarea {
   transform: translateX(100%);
   transition: transform 180ms ease;
   z-index: 25;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mobile-menu.open {
@@ -282,7 +324,7 @@ button, a, textarea {
 
 .mobile-menu__title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
 
 .mobile-menu__nav {
@@ -295,6 +337,10 @@ button, a, textarea {
   border-radius: 14px;
   background: rgba(255,255,255,0.04);
   border: 1px solid var(--border);
+  min-height: var(--min-tap);
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
 }
 
 .hero {
@@ -327,16 +373,16 @@ button, a, textarea {
 .hero h1 {
   margin: 0;
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(3rem, 6vw, 5rem);
+  font-size: clamp(2.2rem, 6vw, 5rem);
   font-weight: 600;
-  line-height: 0.98;
+  line-height: 1;
   letter-spacing: -0.04em;
 }
 
 .hero h1 span {
   display: block;
   margin-top: 18px;
-  font-size: clamp(1.05rem, 2vw, 1.4rem);
+  font-size: clamp(1rem, 2vw, 1.4rem);
   line-height: 1.5;
   font-weight: 400;
   font-style: italic;
@@ -360,6 +406,7 @@ button, a, textarea {
 .hero-copy {
   width: min(680px, 100%);
   margin: 22px auto 0;
+  font-size: clamp(0.9rem, 2.5vw, 1.05rem);
 }
 
 .hero-actions {
@@ -396,7 +443,7 @@ button, a, textarea {
 .closing-block blockquote {
   margin: 12px 0 10px;
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-size: clamp(1.15rem, 2.5vw, 1.8rem);
   line-height: 1.45;
   font-style: italic;
 }
@@ -421,7 +468,7 @@ button, a, textarea {
 .section-heading h2 {
   margin: 12px 0;
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 .key-scriptures,
@@ -472,7 +519,7 @@ button, a, textarea {
 .step-card__body h3 {
   margin: 14px 0 8px;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem;
+  font-size: clamp(1.15rem, 3vw, 1.4rem);
 }
 
 .step-list,
@@ -486,11 +533,11 @@ button, a, textarea {
 .step-card {
   text-align: left;
   color: inherit;
-  padding: 20px;
+  padding: 18px;
   cursor: pointer;
   display: grid;
-  grid-template-columns: 52px 1fr auto;
-  gap: 16px;
+  grid-template-columns: 44px 1fr auto;
+  gap: 14px;
   align-items: center;
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
   border-color: color-mix(in srgb, var(--accent, var(--gold)) 38%, var(--border));
@@ -507,7 +554,7 @@ button, a, textarea {
 .step-card__number,
 .detail-number {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: var(--muted-2);
 }
 
@@ -525,8 +572,8 @@ button, a, textarea {
   text-align: center;
   color: var(--muted-2);
   line-height: 1.6;
-  font-size: 0.95rem;
-  padding-bottom: 12px;
+  font-size: 0.9rem;
+  padding: 18px 12px;
 }
 
 .detail-topbar {
@@ -536,10 +583,11 @@ button, a, textarea {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
-  padding: 14px 16px;
+  gap: 12px;
+  padding: 10px 14px;
   border-radius: 16px;
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   background: rgba(var(--bg-rgb), 0.78);
   border: 1px solid var(--border);
 }
@@ -547,7 +595,7 @@ button, a, textarea {
 .ghost-button,
 .primary-button,
 .hero-link {
-  min-height: 44px;
+  min-height: var(--min-tap);
   border-radius: 12px;
   padding: 11px 16px;
   cursor: pointer;
@@ -555,6 +603,8 @@ button, a, textarea {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+  text-align: center;
 }
 
 .ghost-button,
@@ -568,6 +618,7 @@ button, a, textarea {
   background: var(--accent-bg);
   color: var(--text);
   border: 1px solid var(--accent-border);
+  font-weight: 500;
 }
 
 .ghost-button:disabled,
@@ -580,15 +631,25 @@ button, a, textarea {
 .dot-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .dot {
-  width: 9px;
-  height: 9px;
+  width: 12px;
+  height: 12px;
   border-radius: 999px;
   background: rgba(255,255,255,0.18);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.dot:hover {
+  background: rgba(255,255,255,0.35);
+  transform: scale(1.2);
 }
 
 .dot.active {
@@ -604,15 +665,19 @@ button, a, textarea {
 .detail-header__meta {
   display: flex;
   align-items: baseline;
-  gap: 16px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
 .detail-header h1 {
   margin: 10px 0 12px;
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.1rem, 4.4vw, 3rem);
-  line-height: 1.05;
+  font-size: clamp(1.8rem, 4.4vw, 3rem);
+  line-height: 1.08;
+}
+
+.detail-header h1:focus {
+  outline: none;
 }
 
 .detail-theme {
@@ -620,7 +685,7 @@ button, a, textarea {
   padding-left: 14px;
   border-left: 2px solid var(--border);
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.35rem;
+  font-size: clamp(1.05rem, 2.5vw, 1.35rem);
   font-style: italic;
   color: var(--muted);
 }
@@ -638,10 +703,13 @@ button, a, textarea {
 .question-item {
   display: grid;
   grid-template-columns: 24px 1fr;
-  gap: 14px;
+  gap: 12px;
   align-items: start;
-  padding: 16px;
+  padding: 14px;
   cursor: pointer;
+  min-height: var(--min-tap);
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+  line-height: 1.6;
 }
 
 .question-item.checked {
@@ -656,11 +724,33 @@ button, a, textarea {
   display: inline-grid;
   place-items: center;
   margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.question-item.checked .question-item__box {
+  border-color: var(--gold);
+  background: var(--accent-bg);
 }
 
 .scripture-card {
+  padding: 0;
+}
+
+.scripture-card__toggle {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: inherit;
   padding: 16px;
   cursor: pointer;
+  border-radius: 16px;
+  min-height: var(--min-tap);
+}
+
+.scripture-card__toggle:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: -2px;
 }
 
 .scripture-card__row {
@@ -672,27 +762,29 @@ button, a, textarea {
 
 .scripture-card__ref {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.15rem;
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
   font-weight: 700;
 }
 
 .scripture-card__icon {
   color: var(--muted-2);
   font-size: 1.1rem;
+  flex-shrink: 0;
 }
 
 .scripture-card__insight {
   margin: 8px 0 0;
   color: var(--muted);
   line-height: 1.6;
+  font-size: clamp(0.85rem, 2.2vw, 0.95rem);
 }
 
 .scripture-card__text {
-  margin: 12px 0 0;
-  padding-top: 12px;
+  margin: 0;
+  padding: 12px 16px 16px;
   border-top: 1px solid var(--border);
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   line-height: 1.55;
 }
 
@@ -707,9 +799,16 @@ button, a, textarea {
   color: var(--text);
   padding: 16px;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   line-height: 1.55;
   outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.journal-textarea:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
 }
 
 :root[data-theme='light'] .journal-textarea {
@@ -722,6 +821,7 @@ button, a, textarea {
   justify-content: space-between;
   gap: 12px;
   margin-top: 14px;
+  flex-wrap: wrap;
 }
 
 .closing-block {
@@ -736,6 +836,7 @@ button, a, textarea {
   background: var(--border);
 }
 
+/* ???? Tablet breakpoint ???? */
 @media (max-width: 900px) {
   .pillars-grid,
   .intro-grid--three {
@@ -743,14 +844,33 @@ button, a, textarea {
   }
 }
 
+/* ???? Mobile breakpoint ???? */
 @media (max-width: 720px) {
   .container {
-    width: min(100% - 20px, 960px);
-    padding-top: max(12px, env(safe-area-inset-top));
+    width: calc(100% - 20px);
+    padding-top: max(10px, env(safe-area-inset-top));
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
   }
 
   .site-header {
-    padding: 12px 14px;
+    padding: 8px 10px;
+    gap: 8px;
+    border-radius: 14px;
+  }
+
+  .site-brand__mark {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .site-brand {
+    gap: 8px;
+  }
+
+  .site-tag {
+    font-size: 0.6rem;
   }
 
   .desktop-nav {
@@ -762,55 +882,32 @@ button, a, textarea {
   }
 
   .hero-banner {
-    margin-bottom: 18px;
+    margin-bottom: 16px;
+    border-radius: 14px;
   }
 
   .hero-banner img {
     aspect-ratio: 16 / 9;
   }
 
-  .site-brand__mark,
   .hero-mark {
-    width: 50px;
-    height: 50px;
-    font-size: 1.15rem;
-  }
-
-  .site-brand {
-    gap: 10px;
-  }
-
-  .site-brand__sub {
-    line-height: 1.45;
-  }
-
-  .hero h1 {
-    font-size: clamp(2.35rem, 11vw, 3.15rem);
-  }
-
-  .hero h1 span {
-    margin-top: 14px;
+    width: 44px;
+    height: 44px;
     font-size: 1rem;
   }
 
+  .hero h1 {
+    font-size: clamp(2rem, 10vw, 3rem);
+    letter-spacing: -0.03em;
+  }
+
+  .hero h1 span {
+    margin-top: 12px;
+    font-size: 0.95rem;
+  }
+
   .hero-copy {
-    font-size: 0.98rem;
-  }
-
-  .site-header,
-  .intro-grid,
-  .intro-grid--three,
-  .pillars-grid,
-  .detail-nav,
-  .journal-actions {
-    grid-template-columns: 1fr;
-  }
-
-  .site-header,
-  .detail-nav,
-  .journal-actions {
-    flex-direction: row;
-    align-items: center;
+    font-size: 0.9rem;
   }
 
   .intro-grid,
@@ -822,32 +919,53 @@ button, a, textarea {
 
   .step-card {
     grid-template-columns: 38px 1fr;
-    padding: 16px;
+    padding: 14px;
+    gap: 12px;
   }
 
   .step-card__arrow {
     display: none;
   }
 
+  .step-card__body h3 {
+    font-size: 1.1rem;
+    margin-top: 0;
+  }
+
+  .step-card__body p {
+    font-size: 0.85rem;
+  }
+
   .detail-topbar {
-    top: max(74px, calc(env(safe-area-inset-top) + 70px));
-    padding: 12px;
-    flex-direction: column;
-    align-items: stretch;
+    top: max(66px, calc(env(safe-area-inset-top) + 62px));
+    padding: 8px 10px;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 
   .dot-row {
     justify-content: center;
+    width: 100%;
+  }
+
+  .dot {
+    width: 14px;
+    height: 14px;
   }
 
   .detail-header,
   .panel,
   .closing-block {
-    padding: 18px;
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .detail-header h1 {
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
   }
 
   .detail-theme {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
   }
 
   .detail-nav,
@@ -864,21 +982,124 @@ button, a, textarea {
   }
 
   .question-item {
-    gap: 12px;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .scripture-card__toggle {
     padding: 14px;
   }
 
   .scripture-card__ref {
-    font-size: 1.05rem;
+    font-size: 1rem;
+  }
+
+  .scripture-card__text {
+    padding: 12px 14px 14px;
   }
 
   .daily-verse__text,
   .prayer-panel blockquote,
   .closing-block blockquote {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+  }
+
+  .intro-panel h2,
+  .section-heading h2 {
+    font-size: clamp(1.35rem, 5vw, 1.8rem);
+  }
+
+  .pillar-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .footer-note {
+    font-size: 0.82rem;
+    padding: 14px 8px;
+  }
+
+  .journal-textarea {
+    min-height: 100px;
+    padding: 14px;
   }
 }
 
+/* ???? Small phone breakpoint (320px–375px) ???? */
+@media (max-width: 374px) {
+  .container {
+    width: calc(100% - 12px);
+  }
+
+  .site-header {
+    padding: 6px 8px;
+    border-radius: 12px;
+  }
+
+  .site-brand__mark {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero h1 span {
+    font-size: 0.88rem;
+  }
+
+  .panel,
+  .detail-header,
+  .closing-block {
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .step-card {
+    grid-template-columns: 32px 1fr;
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .step-card__number {
+    font-size: 1.4rem;
+  }
+
+  .question-item {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .ghost-button,
+  .primary-button,
+  .hero-link {
+    padding: 10px 12px;
+    font-size: 0.875rem;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* ???? Landscape phone ???? */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    padding-top: 8px;
+  }
+
+  .hero-mark {
+    display: none;
+  }
+
+  .hero-banner img {
+    aspect-ratio: 21 / 9;
+  }
+}
+
+/* ???? Reduced motion ???? */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -887,5 +1108,55 @@ button, a, textarea {
   *, *::before, *::after {
     animation: none !important;
     transition: none !important;
+  }
+}
+
+/* ???? High contrast / forced-colors ???? */
+@media (prefers-contrast: more) {
+  :root {
+    --border: rgba(255, 255, 255, 0.35);
+    --muted: rgba(239, 239, 239, 0.9);
+    --muted-2: rgba(239, 239, 239, 0.7);
+  }
+
+  :root[data-theme='light'] {
+    --border: rgba(0, 0, 0, 0.3);
+    --muted: rgba(30, 26, 21, 0.92);
+    --muted-2: rgba(30, 26, 21, 0.72);
+  }
+
+  .ghost-button,
+  .primary-button,
+  .hero-link {
+    border-width: 2px;
+  }
+
+  .question-item__box {
+    border-width: 3px;
+  }
+}
+
+@media (forced-colors: active) {
+  .dot.active {
+    background: Highlight;
+  }
+
+  .ghost-button,
+  .primary-button,
+  .hero-link,
+  .icon-button,
+  .step-card,
+  .question-item,
+  .scripture-card {
+    border: 2px solid ButtonText;
+  }
+
+  :focus-visible {
+    outline: 2px solid Highlight;
+  }
+
+  .question-item.checked .question-item__box {
+    background: Highlight;
+    border-color: Highlight;
   }
 }
