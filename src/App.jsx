@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+﻿import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { DAILY_VERSE, GUIDE_PILLARS, KEY_SCRIPTURES, PROMISES, SECTIONS } from './data';
 
 function useTheme() {
@@ -32,7 +32,7 @@ function ThemeToggle({ theme, toggleTheme }) {
       title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
       type="button"
     >
-      <span aria-hidden="true">{theme === 'dark' ? '☀️' : '🌙'}</span>
+      <span aria-hidden="true">{theme === 'dark' ? 'â˜€ï¸' : 'ðŸŒ™'}</span>
     </button>
   );
 }
@@ -164,7 +164,7 @@ function InAppBrowserBanner() {
   return (
     <div className="inapp-banner" role="status">
       <span>For the best experience, open this page in Safari or Chrome.</span>
-      <button type="button" onClick={() => setShow(false)} aria-label="Dismiss browser notice">✕</button>
+      <button type="button" onClick={() => setShow(false)} aria-label="Dismiss browser notice">âœ•</button>
     </div>
   );
 }
@@ -232,7 +232,7 @@ function SiteHeader({ theme, toggleTheme, menuOpen, setMenuOpen }) {
           <span className="site-brand__mark" aria-hidden="true">{'\u2726'}</span>
           <span>
             <span className="site-tag">HisWillGuide.com</span>
-            <span className="site-brand__sub">Scripture · Prayer · Wisdom · Discernment</span>
+            <span className="site-brand__sub">Scripture Â· Prayer Â· Wisdom Â· Discernment</span>
           </span>
         </a>
 
