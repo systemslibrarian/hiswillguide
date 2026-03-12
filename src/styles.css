@@ -370,10 +370,12 @@ button, a, [role="checkbox"] {
 }
 
 .hero-banner img {
-  width: 100%;
+  width: 50%;
   height: auto;
   aspect-ratio: 16 / 7.2;
   object-fit: cover;
+  margin: 0 auto;
+  display: block;
 }
 
 .hero-mark {
