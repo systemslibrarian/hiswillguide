@@ -1,0 +1,55 @@
+<svg width="1600" height="720" viewBox="0 0 1600 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0D0D0D"/>
+      <stop offset="1" stop-color="#151519"/>
+    </linearGradient>
+    <radialGradient id="g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(300 160) rotate(15) scale(480 280)">
+      <stop stop-color="#B8860B" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#B8860B" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1220 540) rotate(-12) scale(420 260)">
+      <stop stop-color="#6A78B5" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#6A78B5" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="goldStroke" x1="260" y1="120" x2="260" y2="600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D4A93A"/>
+      <stop offset="1" stop-color="#8D6510"/>
+    </linearGradient>
+    <filter id="softGlow" x="0" y="0" width="1600" height="720" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="28"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="720" fill="url(#bg)"/>
+  <rect width="1600" height="720" fill="url(#g1)"/>
+  <rect width="1600" height="720" fill="url(#g2)"/>
+
+  <g opacity="0.28">
+    <circle cx="1320" cy="150" r="2" fill="#F7E7B0"/>
+    <circle cx="1415" cy="210" r="1.7" fill="#F7E7B0"/>
+    <circle cx="1255" cy="250" r="1.4" fill="#F7E7B0"/>
+    <circle cx="1180" cy="150" r="1.8" fill="#F7E7B0"/>
+    <circle cx="1110" cy="220" r="1.2" fill="#F7E7B0"/>
+    <circle cx="1370" cy="285" r="1.5" fill="#F7E7B0"/>
+  </g>
+
+  <g opacity="0.3" filter="url(#softGlow)">
+    <path d="M220 155L220 465" stroke="#D4A93A" stroke-width="20" stroke-linecap="round"/>
+    <path d="M120 255H320" stroke="#D4A93A" stroke-width="20" stroke-linecap="round"/>
+  </g>
+
+  <path d="M220 155L220 465" stroke="url(#goldStroke)" stroke-width="12" stroke-linecap="round"/>
+  <path d="M120 255H320" stroke="url(#goldStroke)" stroke-width="12" stroke-linecap="round"/>
+
+  <path d="M965 250C915 220 856 206 794 206C660 206 545 275 492 378C573 304 675 266 790 266C865 266 936 283 998 316L965 250Z" fill="#F3E7C2" fill-opacity="0.06"/>
+  <path d="M982 300C927 270 861 254 791 254C672 254 566 304 492 390C568 343 661 316 763 316C844 316 922 333 993 368L982 300Z" fill="#F3E7C2" fill-opacity="0.08"/>
+  <path d="M995 354C923 329 846 316 763 316C660 316 566 343 492 390C602 387 704 400 796 430C870 454 934 488 986 530L995 354Z" fill="#F3E7C2" fill-opacity="0.1"/>
+
+  <text x="402" y="242" fill="#C9A84C" font-family="DM Sans, Arial, sans-serif" font-size="18" letter-spacing="8">HISWILLGUIDE.COM</text>
+  <text x="398" y="334" fill="#F3EBD9" font-family="Cormorant Garamond, Georgia, serif" font-size="86" font-weight="600">Teach me to do</text>
+  <text x="398" y="420" fill="#F3EBD9" font-family="Cormorant Garamond, Georgia, serif" font-size="92" font-weight="600">Your will</text>
+  <text x="402" y="486" fill="#D9D1C2" font-family="DM Sans, Arial, sans-serif" font-size="28">A Scripture-centered guide for prayer, wisdom, and discernment.</text>
+
+  <text x="402" y="566" fill="#A99F8E" font-family="DM Sans, Arial, sans-serif" font-size="22">“Teach me to do your will, for you are my God.” — Psalm 143:10</text>
+</svg>
