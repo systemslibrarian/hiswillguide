@@ -226,10 +226,8 @@ function Home({ onOpenSection, theme, toggleTheme, menuOpen, setMenuOpen }) {
           <img src="/banner.svg" alt="HisWillGuide banner with cross, open Bible, and Psalm 143:10 theme" />
         </div>
         <div className="hero-mark">✦</div>
-        <h1>
-          Learn to discern God’s will
-          <span>with a calm, biblical guide rooted in surrender, Scripture, prayer, wise counsel, and obedient trust.</span>
-        </h1>
+        <h1>Learn to discern God&rsquo;s will</h1>
+        <p className="hero-subtitle">A calm, biblical guide rooted in surrender, Scripture, prayer, wise counsel, and obedient trust.</p>
         <p className="hero-copy">
           His Will Guide is a reflective Christian resource for believers who want more than quick answers. It helps you slow
           down, seek God honestly, and walk through decisions in a faithful, Scripture-shaped way.
