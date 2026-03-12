@@ -29,27 +29,33 @@ export const GUIDE_PILLARS = [
 export const KEY_SCRIPTURES = [
   {
     ref: 'Romans 12:1\u20132',
-    note: 'Surrender and renewal lead to discernment.',
+    insight: 'Surrender and renewal lead to discernment.',
+    text: 'I appeal to you therefore, brothers, by the mercies of God, to present your bodies as a living sacrifice, holy and acceptable to God, which is your spiritual worship. Do not be conformed to this world, but be transformed by the renewal of your mind, that by testing you may discern what is the will of God, what is good and acceptable and perfect.',
   },
   {
     ref: 'Proverbs 3:5\u20136',
-    note: 'Trust God instead of leaning on yourself.',
+    insight: 'Trust God instead of leaning on yourself.',
+    text: 'Trust in the Lord with all your heart, and do not lean on your own understanding. In all your ways acknowledge him, and he will make straight your paths.',
   },
   {
     ref: 'Ephesians 5:17',
-    note: 'Seek to understand what the will of the Lord is.',
+    insight: 'Seek to understand what the will of the Lord is.',
+    text: 'Therefore do not be foolish, but understand what the will of the Lord is.',
   },
   {
     ref: 'James 1:5',
-    note: 'Ask God for wisdom; He gives generously.',
+    insight: 'Ask God for wisdom; He gives generously.',
+    text: 'If any of you lacks wisdom, let him ask God, who gives generously to all without reproach, and it will be given him.',
   },
   {
     ref: 'Psalm 143:10',
-    note: 'A prayer to be taught and led by God.',
+    insight: 'A prayer to be taught and led by God.',
+    text: 'Teach me to do your will, for you are my God! Let your good Spirit lead me on level ground!',
   },
   {
     ref: 'Micah 6:8',
-    note: "Much of God's will is already morally clear.",
+    insight: "Much of God's will is already morally clear.",
+    text: 'He has told you, O man, what is good; and what does the Lord require of you but to do justice, and to love kindness, and to walk humbly with your God?',
   },
 ];
 
@@ -113,13 +119,19 @@ export const SECTIONS = [
     theme: "God's written Word is the first lens for every decision.",
     color: '#7a5c2e',
     description:
-      'Much of what Christians call guidance is already addressed in the Bible. Before asking God for new direction, ask whether He has already spoken clearly through His Word about your character, motives, or choices.',
+      "Much of God's will is already clear in Scripture \u2014 holiness, gratitude, justice, love. Before seeking specific direction, consider whether you are walking in what He has plainly revealed.",
     questions: [
+      'Am I already obeying the will God has clearly shown me?',
       'Does this decision align with what Scripture clearly commands or forbids?',
       'Am I overlooking a biblical principle because I want an easier answer?',
       'Would this choice help me love God and neighbor more faithfully?',
     ],
     scriptures: [
+      {
+        ref: '1 Thessalonians 4:3',
+        text: 'For this is the will of God, your sanctification.',
+        insight: "God's revealed will often begins with holiness in body and spirit.",
+      },
       {
         ref: 'Psalm 119:105',
         text: 'Your word is a lamp to my feet and a light to my path.',
@@ -177,11 +189,12 @@ export const SECTIONS = [
     theme: 'Discernment is relational, not merely analytical.',
     color: '#5b3a6b',
     description:
-      'The Christian life is meant to be lived in step with the Holy Spirit. The more you walk with Him, the more your desires, reactions, and priorities are reshaped.',
+      'The Christian life is meant to be lived in step with the Holy Spirit. The more you walk with Him, the more your desires, reactions, and priorities are reshaped. Yet even sincere hearts can deceive \u2014 test every inner sense carefully.',
     questions: [
       'Am I cultivating sensitivity to the Holy Spirit through daily obedience?',
       'Where do I already see God at work around me?',
       "Are my desires moving toward God's heart or toward self-protection?",
+      'Could this sense of peace be comfort, avoidance, or the path of least resistance?',
     ],
     scriptures: [
       {
@@ -198,6 +211,11 @@ export const SECTIONS = [
         ref: 'Psalm 37:4',
         text: 'Delight yourself in the Lord, and he will give you the desires of your heart.',
         insight: 'As delight deepens, desires are reordered.',
+      },
+      {
+        ref: 'Jeremiah 17:9',
+        text: 'The heart is deceitful above all things, and desperately sick; who can understand it?',
+        insight: 'Inner impressions must align with Scripture and counsel.',
       },
     ],
   },
@@ -236,7 +254,7 @@ export const SECTIONS = [
     theme: 'God steers through both opportunity and restraint.',
     color: '#8b4513',
     description:
-      "Circumstances matter, but they are not the only voice. An open door is not always God's door, and a closed door is not always failure. Watch providence with humility.",
+      "Circumstances matter, but they are not the only voice. An open door is not always God's invitation \u2014 Paul found an open door in Troas but left because his spirit had no rest. A closed door is not always failure. Watch providence with humility.",
     questions: [
       'Are doors opening or closing as I move in this direction?',
       'Am I mistaking convenience for confirmation?',
@@ -257,6 +275,11 @@ export const SECTIONS = [
         ref: 'Isaiah 30:21',
         text: 'Your ears shall hear a word behind you, saying, "This is the way, walk in it."',
         insight: 'God is able to guide personally and clearly.',
+      },
+      {
+        ref: '2 Corinthians 2:12\u201313',
+        text: 'When I came to Troas to preach the gospel of Christ, even though a door was opened for me in the Lord, my spirit was not at rest. So I took leave of them and went on to Macedonia.',
+        insight: 'Opportunity alone is not enough \u2014 peace and leading matter more.',
       },
     ],
   },
