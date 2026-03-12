@@ -1,16 +1,20 @@
-# HisWillGuide.com — Render-Ready React Site
+# HisWillGuide.com
 
-A polished one-page React/Vite site for **HisWillGuide.com**, designed for a GitHub-to-Render deployment flow.
+A calm, Scripture-centered guide to discerning God's will through surrender, Scripture, prayer, wisdom, and obedient trust.
+
+**🌐 Live demo: [HisWillGuide.com](https://hiswillguide.com)**
 
 ## Features
 
-- elegant dark Scripture-centered design
-- branded homepage for **HisWillGuide.com**
-- four anchor sections: Scripture, Prayer, Wisdom, Discernment
-- interactive 8-step guide for discerning God's will
-- per-step reflection checklist saved in localStorage
-- reflection journal saved in localStorage
-- static-site friendly for easy hosting on Render
+- Elegant dark/light theme with toggle
+- Branded homepage for **HisWillGuide.com**
+- Four anchor sections: Scripture, Prayer, Wisdom, Discernment
+- Interactive 8-step guide for discerning God's will
+- Per-step reflection checklist saved in localStorage
+- Reflection journal saved in localStorage
+- Fully mobile-responsive (320px to desktop)
+- WCAG 2.1 AA accessible (screen readers, keyboard, high contrast)
+- Deployed automatically via GitHub Actions to GitHub Pages
 
 ## Local development
 
@@ -22,26 +26,36 @@ npm run dev
 ## Production build
 
 ```bash
-npm install
 npm run build
 npm run preview
 ```
 
-## Deploy to GitHub + Render
+## Deployment
 
-1. Create a new GitHub repository.
-2. Upload this project to the repo root.
-3. In Render, create a **Static Site** and connect the GitHub repo.
-4. Use these settings:
-   - **Build Command:** `npm install && npm run build`
-   - **Publish Directory:** `dist`
-5. Deploy.
+This site deploys automatically to **GitHub Pages** on every push to `main` via GitHub Actions.
 
-A `render.yaml` file is included, so Render can often detect the correct setup automatically.
+### Custom domain setup
 
-## Suggested next improvements
+1. In your GitHub repo, go to **Settings → Pages**.
+2. Under **Source**, select **GitHub Actions**.
+3. Under **Custom domain**, enter `HisWillGuide.com`.
+4. Configure your DNS provider to point to GitHub Pages:
+   - **A records** (apex domain):
+     ```
+     185.199.108.153
+     185.199.109.153
+     185.199.110.153
+     185.199.111.153
+     ```
+   - **CNAME record** (www):
+     ```
+     www → systemslibrarian.github.io
+     ```
+5. Check **Enforce HTTPS** once DNS propagates.
 
-- add a custom domain for `HisWillGuide.com`
-- add favicon / social preview image
-- add a Scripture library page or devotionals page later
-- migrate into Next.js later if you want multi-page routing
+## Tech stack
+
+- [React 18](https://react.dev)
+- [Vite 5](https://vitejs.dev)
+- [GitHub Actions](https://docs.github.com/en/actions) for CI/CD
+- [GitHub Pages](https://pages.github.com) for hosting
