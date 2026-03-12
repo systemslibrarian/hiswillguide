@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { DAILY_VERSE, GUIDE_PILLARS, KEY_SCRIPTURES, PROMISES, SECTIONS } from './data';
 
 function useTheme() {
@@ -33,7 +32,7 @@ function ThemeToggle({ theme, toggleTheme }) {
       title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
       type="button"
     >
-      <span aria-hidden="true">{theme === 'dark' ? '☀️' : '🌙'}</span>
+      <span aria-hidden="true">{theme === 'dark' ? '??' : '??'}</span>
     </button>
   );
 }
@@ -53,7 +52,7 @@ function ScriptureCard({ scripture }) {
       >
         <div className="scripture-card__row">
           <span className="scripture-card__ref">{scripture.ref}</span>
-          <span className="scripture-card__icon" aria-hidden="true">{expanded ? '−' : '+'}</span>
+          <span className="scripture-card__icon" aria-hidden="true">{expanded ? '?' : '+'}</span>
         </div>
         <p className="scripture-card__insight">{scripture.insight}</p>
       </button>
@@ -98,7 +97,7 @@ function ReflectionChecklist({ items, sectionId }) {
             role="checkbox"
             aria-checked={active}
           >
-            <span className="question-item__box" aria-hidden="true">{active ? '✓' : ''}</span>
+            <span className="question-item__box" aria-hidden="true">{active ? '?' : ''}</span>
             <span>{item}</span>
           </button>
         );
@@ -143,7 +142,7 @@ function Journal({ section }) {
       />
       <div className="journal-actions">
         <button className="primary-button" onClick={save} type="button">
-          {saved ? 'Saved ✓' : 'Save reflection'}
+          {saved ? 'Saved ?' : 'Save reflection'}
         </button>
         <span className="sr-only" role="status" aria-live="polite">
           {saved ? 'Reflection saved successfully.' : ''}
@@ -168,7 +167,7 @@ function InAppBrowserBanner() {
     <div className="inapp-banner" role="alert">
       <span>For the best experience, open this page in Safari or Chrome.</span>
       <button type="button" onClick={() => setShow(false)} aria-label="Dismiss browser notice">
-        <span aria-hidden="true">✕</span>
+        <span aria-hidden="true">?</span>
       </button>
     </div>
   );
@@ -189,7 +188,6 @@ function SiteHeader({ theme, toggleTheme, menuOpen, setMenuOpen }) {
     return () => window.removeEventListener('resize', close);
   }, [setMenuOpen]);
 
-  // Close menu on Escape key
   useEffect(() => {
     if (!menuOpen) return;
     const onKey = (e) => {
@@ -202,7 +200,6 @@ function SiteHeader({ theme, toggleTheme, menuOpen, setMenuOpen }) {
     return () => document.removeEventListener('keydown', onKey);
   }, [menuOpen, setMenuOpen]);
 
-  // Focus trap inside mobile menu
   useEffect(() => {
     if (!menuOpen || !menuRef.current) return;
     const menu = menuRef.current;
@@ -236,10 +233,10 @@ function SiteHeader({ theme, toggleTheme, menuOpen, setMenuOpen }) {
     <>
       <header className="site-header" role="banner">
         <a className="site-brand" href="#top" aria-label="HisWillGuide home">
-          <span className="site-brand__mark" aria-hidden="true">✦</span>
+          <span className="site-brand__mark" aria-hidden="true">?</span>
           <span>
             <span className="site-tag">HisWillGuide.com</span>
-            <span className="site-brand__sub">Scripture · Prayer · Wisdom · Discernment</span>
+            <span className="site-brand__sub">Scripture � Prayer � Wisdom � Discernment</span>
           </span>
         </a>
 
@@ -258,7 +255,7 @@ function SiteHeader({ theme, toggleTheme, menuOpen, setMenuOpen }) {
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             onClick={() => setMenuOpen((current) => !current)}
           >
-            <span aria-hidden="true">{menuOpen ? '✕' : '☰'}</span>
+            <span aria-hidden="true">{menuOpen ? '?' : '?'}</span>
           </button>
         </div>
       </header>
@@ -282,7 +279,7 @@ function SiteHeader({ theme, toggleTheme, menuOpen, setMenuOpen }) {
             <div className="mobile-menu__title">HisWillGuide.com</div>
           </div>
           <button type="button" className="icon-button" onClick={() => { setMenuOpen(false); menuButtonRef.current?.focus(); }} aria-label="Close menu">
-            <span aria-hidden="true">✕</span>
+            <span aria-hidden="true">?</span>
           </button>
         </div>
         <nav className="mobile-menu__nav" aria-label="Mobile navigation">
@@ -307,9 +304,9 @@ function Home({ onOpenSection, theme, toggleTheme, menuOpen, setMenuOpen }) {
         <div className="hero-banner panel">
           <img src="/banner.svg" alt="HisWillGuide banner with cross, open Bible, and Psalm 143:10 theme" loading="eager" />
         </div>
-        <div className="hero-mark" aria-hidden="true">✦</div>
+        <div className="hero-mark" aria-hidden="true">?</div>
         <h1 id="hero-heading">
-          Learn to discern God's will
+          Learn to discern God&#39;s will
           <span>with a calm, biblical guide rooted in surrender, Scripture, prayer, wise counsel, and obedient trust.</span>
         </h1>
         <p className="hero-copy">
@@ -324,8 +321,8 @@ function Home({ onOpenSection, theme, toggleTheme, menuOpen, setMenuOpen }) {
 
       <section className="daily-verse panel" aria-label="Verse of encouragement">
         <div className="eyebrow">A Starting Point</div>
-        <p className="daily-verse__text">"{DAILY_VERSE.text}"</p>
-        <div className="daily-verse__ref">— {DAILY_VERSE.ref}</div>
+        <p className="daily-verse__text">&ldquo;{DAILY_VERSE.text}&rdquo;</p>
+        <div className="daily-verse__ref">&mdash; {DAILY_VERSE.ref}</div>
       </section>
 
       <section id="about" className="intro-grid intro-grid--three" aria-label="About this site">
@@ -333,7 +330,7 @@ function Home({ onOpenSection, theme, toggleTheme, menuOpen, setMenuOpen }) {
           <div className="eyebrow">What this site is</div>
           <h2>A pastoral framework, not a formula.</h2>
           <p>
-            This site is designed to help Christians think biblically about guidance. God's will is not usually found in panic
+            This site is designed to help Christians think biblically about guidance. God&#39;s will is not usually found in panic
             or pressure, but in surrender, truth, prayer, and faithful next steps.
           </p>
         </article>
@@ -342,7 +339,7 @@ function Home({ onOpenSection, theme, toggleTheme, menuOpen, setMenuOpen }) {
           <h2>Not a shortcut to certainty.</h2>
           <p>
             It does not promise instant answers, hidden codes, or mystical hacks. It aims to form discernment so that your
-            decisions are shaped by God's character and Word.
+            decisions are shaped by God&#39;s character and Word.
           </p>
         </article>
         <article className="panel intro-panel">
@@ -397,9 +394,194 @@ function Home({ onOpenSection, theme, toggleTheme, menuOpen, setMenuOpen }) {
               <div className="step-card__body">
                 <h3>{section.title}</h3>
                 <p>
-                  {section.subtitle} · {section.scriptures.length} scriptures · {section.questions.length} reflection prompts
+                  {section.subtitle} &middot; {section.scriptures.length} scriptures &middot; {section.questions.length} reflection prompts
                 </p>
               </div>
-              <div className="step-card__arrow" aria-hidden="true">→</div>
+              <div className="step-card__arrow" aria-hidden="true">&rarr;</div>
             </button>
           ))}
+        </div>
+      </section>
+
+      <section id="scriptures" className="intro-grid" aria-label="Core scriptures and promises">
+        <article className="panel intro-panel">
+          <div className="eyebrow">Core Scriptures</div>
+          <h2>Verses that shape discernment.</h2>
+          <ul className="key-scriptures">
+            {KEY_SCRIPTURES.map((item) => (
+              <li key={item.ref}>
+                <strong>{item.ref}</strong>
+                <span>{item.note}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+        <article className="panel intro-panel promises-panel">
+          <div className="eyebrow">What God promises</div>
+          <h2>What you can expect as you seek Him.</h2>
+          <ul className="promise-list">
+            {PROMISES.map((item) => (
+              <li key={item.title}>
+                <strong>{item.title}</strong>
+                <span>{item.copy}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      </section>
+
+      <section id="prayer" className="panel prayer-panel" aria-label="Closing prayer">
+        <div className="eyebrow">Closing Prayer</div>
+        <blockquote>
+          &ldquo;Teach me to do your will, for you are my God; let your good Spirit lead me on level ground.&rdquo;
+        </blockquote>
+        <div className="daily-verse__ref">&mdash; Psalm 143:10</div>
+        <p className="prayer-panel__copy">
+          Let this become the posture of the whole site: not merely asking what to do, but asking God to form who we are.
+        </p>
+      </section>
+
+      <footer className="footer-note" role="contentinfo">
+        HisWillGuide.com &mdash; a Scripture-centered resource for believers seeking to discern God&#39;s will with humility,
+        wisdom, and obedience.
+      </footer>
+    </>
+  );
+}
+
+function Detail({ activeId, onBack, onNavigate, theme, toggleTheme, menuOpen, setMenuOpen }) {
+  const section = useMemo(() => SECTIONS.find((item) => item.id === activeId) ?? SECTIONS[0], [activeId]);
+  const index = SECTIONS.findIndex((item) => item.id === section.id);
+  const previous = SECTIONS[index - 1];
+  const next = SECTIONS[index + 1];
+  const headingRef = useRef(null);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const timer = setTimeout(() => headingRef.current?.focus(), 120);
+    return () => clearTimeout(timer);
+  }, [activeId]);
+
+  return (
+    <>
+      <InAppBrowserBanner />
+      <SiteHeader theme={theme} toggleTheme={toggleTheme} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <div className="detail-shell">
+        <div className="detail-topbar">
+          <button className="ghost-button" onClick={onBack} type="button">
+            <span aria-hidden="true">&larr;</span> Home
+          </button>
+          <nav className="dot-row" aria-label="Step progress">
+            {SECTIONS.map((item, i) => (
+              <button
+                key={item.id}
+                className={`dot ${item.id === section.id ? 'active' : ''}`}
+                onClick={() => onNavigate(item.id)}
+                type="button"
+                aria-label={`Go to step ${i + 1}: ${item.title}`}
+                aria-current={item.id === section.id ? 'step' : undefined}
+              />
+            ))}
+          </nav>
+        </div>
+
+        <article className="detail-header" style={{ '--accent': section.color }} aria-labelledby="detail-title">
+          <div className="detail-header__meta">
+            <span className="detail-number" aria-hidden="true">{section.number}</span>
+            <span className="eyebrow">Step {section.number} &middot; {section.subtitle}</span>
+          </div>
+          <h1 id="detail-title" ref={headingRef} tabIndex={-1}>{section.title}</h1>
+          <p className="detail-theme">{section.theme}</p>
+          <p className="detail-description">{section.description}</p>
+        </article>
+
+        <section className="panel" aria-labelledby={`reflection-heading-${section.id}`}>
+          <h2 className="eyebrow" id={`reflection-heading-${section.id}`}>Reflection Questions</h2>
+          <ReflectionChecklist items={section.questions} sectionId={section.id} />
+        </section>
+
+        <section className="panel" aria-labelledby={`scripture-heading-${section.id}`}>
+          <h2 className="eyebrow" id={`scripture-heading-${section.id}`}>Scriptures to Meditate On</h2>
+          <div className="scripture-list">
+            {section.scriptures.map((scripture) => (
+              <ScriptureCard key={scripture.ref} scripture={scripture} />
+            ))}
+          </div>
+        </section>
+
+        <Journal section={section} />
+
+        <nav className="detail-nav" aria-label="Step navigation">
+          <button className="ghost-button" disabled={!previous} onClick={() => previous && onNavigate(previous.id)} type="button">
+            <span aria-hidden="true">&larr;</span> Previous
+          </button>
+          <button className="primary-button" disabled={!next} onClick={() => next && onNavigate(next.id)} type="button">
+            {next ? 'Next Step \u2192' : 'Completed \u2713'}
+          </button>
+        </nav>
+
+        <section className="closing-block" aria-label="Closing verse">
+          <div className="divider" aria-hidden="true" />
+          <blockquote>
+            &ldquo;Teach me to do your will, for you are my God; let your good Spirit lead me on level ground.&rdquo;
+          </blockquote>
+          <div className="daily-verse__ref">&mdash; Psalm 143:10</div>
+        </section>
+      </div>
+    </>
+  );
+}
+
+export default function App() {
+  const [activeSectionId, setActiveSectionId] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+
+  const navigateToSection = useCallback((id) => {
+    setActiveSectionId(id);
+  }, []);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [activeSectionId]);
+
+  useEffect(() => {
+    document.title = activeSectionId
+      ? `HisWillGuide.com \u2014 ${SECTIONS.find((item) => item.id === activeSectionId)?.title ?? "Finding God's Will"}`
+      : "HisWillGuide.com \u2014 Discern God's Will Through Scripture, Prayer, and Wisdom";
+  }, [activeSectionId]);
+
+  useEffect(() => {
+    if (!activeSectionId) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [activeSectionId]);
+
+  return (
+    <div className="site-shell">
+      <a className="skip-link" href="#top">Skip to content</a>
+      <div className="background-glow" aria-hidden="true" />
+      <main className="container" id="main-content">
+        {activeSectionId ? (
+          <Detail
+            activeId={activeSectionId}
+            onBack={() => setActiveSectionId(null)}
+            onNavigate={navigateToSection}
+            theme={theme}
+            toggleTheme={toggleTheme}
+            menuOpen={menuOpen}
+            setMenuOpen={setMenuOpen}
+          />
+        ) : (
+          <Home
+            onOpenSection={navigateToSection}
+            theme={theme}
+            toggleTheme={toggleTheme}
+            menuOpen={menuOpen}
+            setMenuOpen={setMenuOpen}
+          />
+        )}
+      </main>
+    </div>
+  );
+}
