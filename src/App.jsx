@@ -32,7 +32,7 @@ function ThemeToggle({ theme, toggleTheme }) {
       title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
       type="button"
     >
-      <span aria-hidden="true">{theme === 'dark' ? '??' : '??'}</span>
+      <span aria-hidden="true">{theme === 'dark' ? '☀️' : '🌙'}</span>
     </button>
   );
 }
@@ -52,13 +52,13 @@ function ScriptureCard({ scripture }) {
       >
         <div className="scripture-card__row">
           <span className="scripture-card__ref">{scripture.ref}</span>
-          <span className="scripture-card__icon" aria-hidden="true">{expanded ? '?' : '+'}</span>
+          <span className="scripture-card__icon" aria-hidden="true">{expanded ? '\u2212' : '+'}</span>
         </div>
         <p className="scripture-card__insight">{scripture.insight}</p>
       </button>
       {expanded && (
         <div id={`${cardId}-text`} role="region" aria-label={`${scripture.ref} full text`}>
-          <p className="scripture-card__text">"{scripture.text}"</p>
+          <p className="scripture-card__text">{'\u201C'}{scripture.text}{'\u201D'}</p>
         </div>
       )}
     </div>
@@ -97,7 +97,7 @@ function ReflectionChecklist({ items, sectionId }) {
             role="checkbox"
             aria-checked={active}
           >
-            <span className="question-item__box" aria-hidden="true">{active ? '?' : ''}</span>
+            <span className="question-item__box" aria-hidden="true">{active ? '\u2713' : ''}</span>
             <span>{item}</span>
           </button>
         );
@@ -126,9 +126,7 @@ function Journal({ section }) {
   return (
     <section className="panel journal-panel" aria-labelledby={`${textareaId}-heading`}>
       <h2 className="eyebrow" id={`${textareaId}-heading`}>Reflection Journal</h2>
-      <p className="journal-copy" id={`${textareaId}-desc`}>
-        Capture what stood out, what needs surrender, or what next step feels most faithful.
-      </p>
+      <p className="journal-copy" id={`${textareaId}-desc`}>Capture what stood out, what needs surrender, or what next step feels most faithful.</p>
       <label htmlFor={textareaId} className="sr-only">
         Your reflection on {section.title}
       </label>
@@ -142,7 +140,7 @@ function Journal({ section }) {
       />
       <div className="journal-actions">
         <button className="primary-button" onClick={save} type="button">
-          {saved ? 'Saved ?' : 'Save reflection'}
+          {saved ? 'Saved \u2713' : 'Save reflection'}
         </button>
         <span className="sr-only" role="status" aria-live="polite">
           {saved ? 'Reflection saved successfully.' : ''}
@@ -164,11 +162,9 @@ function InAppBrowserBanner() {
   if (!show) return null;
 
   return (
-    <div className="inapp-banner" role="alert">
+    <div className="inapp-banner" role="status">
       <span>For the best experience, open this page in Safari or Chrome.</span>
-      <button type="button" onClick={() => setShow(false)} aria-label="Dismiss browser notice">
-        <span aria-hidden="true">?</span>
-      </button>
+      <button type="button" onClick={() => setShow(false)} aria-label="Dismiss browser notice">✕</button>
     </div>
   );
 }
@@ -233,10 +229,10 @@ function SiteHeader({ theme, toggleTheme, menuOpen, setMenuOpen }) {
     <>
       <header className="site-header" role="banner">
         <a className="site-brand" href="#top" aria-label="HisWillGuide home">
-          <span className="site-brand__mark" aria-hidden="true">?</span>
+          <span className="site-brand__mark" aria-hidden="true">{'\u2726'}</span>
           <span>
             <span className="site-tag">HisWillGuide.com</span>
-            <span className="site-brand__sub">Scripture � Prayer � Wisdom � Discernment</span>
+            <span className="site-brand__sub">Scripture · Prayer · Wisdom · Discernment</span>
           </span>
         </a>
 
@@ -255,7 +251,7 @@ function SiteHeader({ theme, toggleTheme, menuOpen, setMenuOpen }) {
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             onClick={() => setMenuOpen((current) => !current)}
           >
-            <span aria-hidden="true">{menuOpen ? '?' : '?'}</span>
+            <span aria-hidden="true">{menuOpen ? '\u2715' : '\u2630'}</span>
           </button>
         </div>
       </header>
@@ -279,7 +275,7 @@ function SiteHeader({ theme, toggleTheme, menuOpen, setMenuOpen }) {
             <div className="mobile-menu__title">HisWillGuide.com</div>
           </div>
           <button type="button" className="icon-button" onClick={() => { setMenuOpen(false); menuButtonRef.current?.focus(); }} aria-label="Close menu">
-            <span aria-hidden="true">?</span>
+            <span aria-hidden="true">{'\u2715'}</span>
           </button>
         </div>
         <nav className="mobile-menu__nav" aria-label="Mobile navigation">
@@ -302,11 +298,11 @@ function Home({ onOpenSection, theme, toggleTheme, menuOpen, setMenuOpen }) {
 
       <section className="hero hero--expanded" id="top" aria-labelledby="hero-heading">
         <div className="hero-banner panel">
-          <img src="/banner.svg" alt="HisWillGuide banner with cross, open Bible, and Psalm 143:10 theme" loading="eager" />
+          <img src="/banner.svg" alt="HisWillGuide banner with cross, open Bible, and Psalm 143:10 theme" />
         </div>
-        <div className="hero-mark" aria-hidden="true">?</div>
+        <div className="hero-mark" aria-hidden="true">{'\u2726'}</div>
         <h1 id="hero-heading">
-          Learn to discern God&#39;s will
+          {"Learn to discern God\u2019s will"}
           <span>with a calm, biblical guide rooted in surrender, Scripture, prayer, wise counsel, and obedient trust.</span>
         </h1>
         <p className="hero-copy">
@@ -321,8 +317,8 @@ function Home({ onOpenSection, theme, toggleTheme, menuOpen, setMenuOpen }) {
 
       <section className="daily-verse panel" aria-label="Verse of encouragement">
         <div className="eyebrow">A Starting Point</div>
-        <p className="daily-verse__text">&ldquo;{DAILY_VERSE.text}&rdquo;</p>
-        <div className="daily-verse__ref">&mdash; {DAILY_VERSE.ref}</div>
+        <p className="daily-verse__text">{'\u201C'}{DAILY_VERSE.text}{'\u201D'}</p>
+        <div className="daily-verse__ref">{'\u2014'} {DAILY_VERSE.ref}</div>
       </section>
 
       <section id="about" className="intro-grid intro-grid--three" aria-label="About this site">
@@ -330,16 +326,14 @@ function Home({ onOpenSection, theme, toggleTheme, menuOpen, setMenuOpen }) {
           <div className="eyebrow">What this site is</div>
           <h2>A pastoral framework, not a formula.</h2>
           <p>
-            This site is designed to help Christians think biblically about guidance. God&#39;s will is not usually found in panic
-            or pressure, but in surrender, truth, prayer, and faithful next steps.
+            {"This site is designed to help Christians think biblically about guidance. God\u2019s will is not usually found in panic or pressure, but in surrender, truth, prayer, and faithful next steps."}
           </p>
         </article>
         <article className="panel intro-panel">
           <div className="eyebrow">What this site is not</div>
           <h2>Not a shortcut to certainty.</h2>
           <p>
-            It does not promise instant answers, hidden codes, or mystical hacks. It aims to form discernment so that your
-            decisions are shaped by God&#39;s character and Word.
+            {"It does not promise instant answers, hidden codes, or mystical hacks. It aims to form discernment so that your decisions are shaped by God\u2019s character and Word."}
           </p>
         </article>
         <article className="panel intro-panel">
@@ -394,16 +388,16 @@ function Home({ onOpenSection, theme, toggleTheme, menuOpen, setMenuOpen }) {
               <div className="step-card__body">
                 <h3>{section.title}</h3>
                 <p>
-                  {section.subtitle} &middot; {section.scriptures.length} scriptures &middot; {section.questions.length} reflection prompts
+                  {section.subtitle} {'\u00B7'} {section.scriptures.length} scriptures {'\u00B7'} {section.questions.length} reflection prompts
                 </p>
               </div>
-              <div className="step-card__arrow" aria-hidden="true">&rarr;</div>
+              <div className="step-card__arrow" aria-hidden="true">{'\u2192'}</div>
             </button>
           ))}
         </div>
       </section>
 
-      <section id="scriptures" className="intro-grid" aria-label="Core scriptures and promises">
+      <section id="scriptures" className="intro-grid">
         <article className="panel intro-panel">
           <div className="eyebrow">Core Scriptures</div>
           <h2>Verses that shape discernment.</h2>
@@ -433,17 +427,16 @@ function Home({ onOpenSection, theme, toggleTheme, menuOpen, setMenuOpen }) {
       <section id="prayer" className="panel prayer-panel" aria-label="Closing prayer">
         <div className="eyebrow">Closing Prayer</div>
         <blockquote>
-          &ldquo;Teach me to do your will, for you are my God; let your good Spirit lead me on level ground.&rdquo;
+          {'\u201C'}Teach me to do your will, for you are my God; let your good Spirit lead me on level ground.{'\u201D'}
         </blockquote>
-        <div className="daily-verse__ref">&mdash; Psalm 143:10</div>
+        <div className="daily-verse__ref">{'\u2014'} Psalm 143:10</div>
         <p className="prayer-panel__copy">
           Let this become the posture of the whole site: not merely asking what to do, but asking God to form who we are.
         </p>
       </section>
 
       <footer className="footer-note" role="contentinfo">
-        HisWillGuide.com &mdash; a Scripture-centered resource for believers seeking to discern God&#39;s will with humility,
-        wisdom, and obedience.
+        {"HisWillGuide.com \u2014 a Scripture-centered resource for believers seeking to discern God\u2019s will with humility, wisdom, and obedience."}
       </footer>
     </>
   );
@@ -469,7 +462,7 @@ function Detail({ activeId, onBack, onNavigate, theme, toggleTheme, menuOpen, se
       <div className="detail-shell">
         <div className="detail-topbar">
           <button className="ghost-button" onClick={onBack} type="button">
-            <span aria-hidden="true">&larr;</span> Home
+            <span aria-hidden="true">{'\u2190'}</span> Home
           </button>
           <nav className="dot-row" aria-label="Step progress">
             {SECTIONS.map((item, i) => (
@@ -488,7 +481,7 @@ function Detail({ activeId, onBack, onNavigate, theme, toggleTheme, menuOpen, se
         <article className="detail-header" style={{ '--accent': section.color }} aria-labelledby="detail-title">
           <div className="detail-header__meta">
             <span className="detail-number" aria-hidden="true">{section.number}</span>
-            <span className="eyebrow">Step {section.number} &middot; {section.subtitle}</span>
+            <span className="eyebrow">Step {section.number} {'\u00B7'} {section.subtitle}</span>
           </div>
           <h1 id="detail-title" ref={headingRef} tabIndex={-1}>{section.title}</h1>
           <p className="detail-theme">{section.theme}</p>
@@ -513,7 +506,7 @@ function Detail({ activeId, onBack, onNavigate, theme, toggleTheme, menuOpen, se
 
         <nav className="detail-nav" aria-label="Step navigation">
           <button className="ghost-button" disabled={!previous} onClick={() => previous && onNavigate(previous.id)} type="button">
-            <span aria-hidden="true">&larr;</span> Previous
+            <span aria-hidden="true">{'\u2190'}</span> Previous
           </button>
           <button className="primary-button" disabled={!next} onClick={() => next && onNavigate(next.id)} type="button">
             {next ? 'Next Step \u2192' : 'Completed \u2713'}
@@ -523,9 +516,9 @@ function Detail({ activeId, onBack, onNavigate, theme, toggleTheme, menuOpen, se
         <section className="closing-block" aria-label="Closing verse">
           <div className="divider" aria-hidden="true" />
           <blockquote>
-            &ldquo;Teach me to do your will, for you are my God; let your good Spirit lead me on level ground.&rdquo;
+            {'\u201C'}Teach me to do your will, for you are my God; let your good Spirit lead me on level ground.{'\u201D'}
           </blockquote>
-          <div className="daily-verse__ref">&mdash; Psalm 143:10</div>
+          <div className="daily-verse__ref">{'\u2014'} Psalm 143:10</div>
         </section>
       </div>
     </>
@@ -547,7 +540,7 @@ export default function App() {
 
   useEffect(() => {
     document.title = activeSectionId
-      ? `HisWillGuide.com \u2014 ${SECTIONS.find((item) => item.id === activeSectionId)?.title ?? "Finding God's Will"}`
+      ? "HisWillGuide.com \u2014 " + (SECTIONS.find((item) => item.id === activeSectionId)?.title || "Finding God's Will")
       : "HisWillGuide.com \u2014 Discern God's Will Through Scripture, Prayer, and Wisdom";
   }, [activeSectionId]);
 

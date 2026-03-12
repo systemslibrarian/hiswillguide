@@ -5,22 +5,22 @@ export const DAILY_VERSE = {
 
 export const GUIDE_PILLARS = [
   {
-    icon: '✦',
+    icon: '\u2726',
     title: 'Scripture',
     description: 'God never leads contrary to His Word. Scripture is the clearest place to begin when seeking His will.',
   },
   {
-    icon: '☷',
+    icon: '\u2637',
     title: 'Prayer',
     description: 'Guidance is relational. Bring your desires honestly before God and ask Him for wisdom with patient trust.',
   },
   {
-    icon: '◌',
+    icon: '\u25CC',
     title: 'Wisdom',
     description: 'Mature counsel, sound judgment, and honest self-examination protect us from mistaking impulse for leading.',
   },
   {
-    icon: '→',
+    icon: '\u2192',
     title: 'Discernment',
     description: 'The goal is not endless analysis but faithful obedience to the next step God makes clear.',
   },
@@ -28,11 +28,11 @@ export const GUIDE_PILLARS = [
 
 export const KEY_SCRIPTURES = [
   {
-    ref: 'Romans 12:1–2',
+    ref: 'Romans 12:1\u20132',
     note: 'Surrender and renewal lead to discernment.',
   },
   {
-    ref: 'Proverbs 3:5–6',
+    ref: 'Proverbs 3:5\u20136',
     note: 'Trust God instead of leaning on yourself.',
   },
   {
@@ -49,7 +49,7 @@ export const KEY_SCRIPTURES = [
   },
   {
     ref: 'Micah 6:8',
-    note: 'Much of God’s will is already morally clear.',
+    note: "Much of God's will is already morally clear.",
   },
 ];
 
@@ -81,21 +81,21 @@ export const SECTIONS = [
     theme: 'Before seeking direction, seek the Director.',
     color: '#b8860b',
     description:
-      'God’s will begins not with a decision to make, but with a life yielded to Him. The first question is not “What should I do?” but “Am I willing to do whatever God asks?”',
+      "God's will begins not with a decision to make, but with a life yielded to Him. The first question is not \"What should I do?\" but \"Am I willing to do whatever God asks?\"",
     questions: [
       'Have I genuinely told God I will do whatever He asks, even if it costs me comfort?',
-      'Am I seeking God’s will to obey it, or just to validate a plan I already prefer?',
+      "Am I seeking God's will to obey it, or just to validate a plan I already prefer?",
       'Is there any area of my life I am still withholding from God?',
     ],
     scriptures: [
       {
-        ref: 'Romans 12:1–2',
+        ref: 'Romans 12:1\u20132',
         text: 'Present your bodies as a living sacrifice... be transformed by the renewal of your mind, that by testing you may discern what is the will of God.',
         insight: 'Surrender comes before discernment.',
       },
       {
         ref: 'John 7:17',
-        text: 'If anyone’s will is to do God’s will, he will know whether the teaching is from God.',
+        text: "If anyone's will is to do God's will, he will know whether the teaching is from God.",
         insight: 'Willingness to obey often precedes clarity.',
       },
       {
@@ -110,7 +110,7 @@ export const SECTIONS = [
     number: '02',
     title: 'What Does Scripture Already Say?',
     subtitle: 'The Clear Word',
-    theme: 'God’s written Word is the first lens for every decision.',
+    theme: "God's written Word is the first lens for every decision.",
     color: '#7a5c2e',
     description:
       'Much of what Christians call guidance is already addressed in the Bible. Before asking God for new direction, ask whether He has already spoken clearly through His Word about your character, motives, or choices.',
@@ -126,14 +126,14 @@ export const SECTIONS = [
         insight: 'God guides through His Word.',
       },
       {
-        ref: '2 Timothy 3:16–17',
+        ref: '2 Timothy 3:16\u201317',
         text: 'All Scripture is breathed out by God and profitable... that the man of God may be complete, equipped for every good work.',
         insight: 'Scripture equips for faithful living.',
       },
       {
         ref: 'Micah 6:8',
         text: 'What does the Lord require of you but to do justice, and to love kindness, and to walk humbly with your God.',
-        insight: 'Much of God’s will is moral clarity, not mystery.',
+        insight: "Much of God's will is moral clarity, not mystery.",
       },
     ],
   },
@@ -158,14 +158,14 @@ export const SECTIONS = [
         insight: 'God is generous with wisdom.',
       },
       {
-        ref: 'Philippians 4:6–7',
+        ref: 'Philippians 4:6\u20137',
         text: 'In everything by prayer and supplication with thanksgiving let your requests be made known to God... and the peace of God... will guard your hearts and your minds in Christ Jesus.',
         insight: 'Peace matters in biblical discernment.',
       },
       {
         ref: 'Colossians 1:9',
         text: 'We have not ceased to pray for you, asking that you may be filled with the knowledge of his will in all spiritual wisdom and understanding.',
-        insight: 'Paul models prayer for knowledge of God’s will.',
+        insight: "Paul models prayer for knowledge of God's will.",
       },
     ],
   },
@@ -181,13 +181,13 @@ export const SECTIONS = [
     questions: [
       'Am I cultivating sensitivity to the Holy Spirit through daily obedience?',
       'Where do I already see God at work around me?',
-      'Are my desires moving toward God’s heart or toward self-protection?',
+      "Are my desires moving toward God's heart or toward self-protection?",
     ],
     scriptures: [
       {
         ref: 'Romans 8:14',
         text: 'For all who are led by the Spirit of God are sons of God.',
-        insight: 'God’s children are not abandoned to self-direction.',
+        insight: "God's children are not abandoned to self-direction.",
       },
       {
         ref: 'Galatians 5:25',
@@ -236,11 +236,11 @@ export const SECTIONS = [
     theme: 'God steers through both opportunity and restraint.',
     color: '#8b4513',
     description:
-      'Circumstances matter, but they are not the only voice. An open door is not always God’s door, and a closed door is not always failure. Watch providence with humility.',
+      "Circumstances matter, but they are not the only voice. An open door is not always God's door, and a closed door is not always failure. Watch providence with humility.",
     questions: [
       'Are doors opening or closing as I move in this direction?',
       'Am I mistaking convenience for confirmation?',
-      'Could an obstacle be God’s redirection rather than simple resistance?',
+      "Could an obstacle be God's redirection rather than simple resistance?",
     ],
     scriptures: [
       {
@@ -251,11 +251,11 @@ export const SECTIONS = [
       {
         ref: 'Proverbs 19:21',
         text: 'Many are the plans in the mind of a man, but it is the purpose of the Lord that will stand.',
-        insight: 'God’s purpose is stronger than our preference.',
+        insight: "God's purpose is stronger than our preference.",
       },
       {
         ref: 'Isaiah 30:21',
-        text: 'Your ears shall hear a word behind you, saying, “This is the way, walk in it.”',
+        text: 'Your ears shall hear a word behind you, saying, "This is the way, walk in it."',
         insight: 'God is able to guide personally and clearly.',
       },
     ],
@@ -265,30 +265,30 @@ export const SECTIONS = [
     number: '07',
     title: 'Am I Willing to Trust and Wait?',
     subtitle: 'The Crisis of Belief',
-    theme: 'God’s timing is part of God’s will.',
+    theme: "God's timing is part of God's will.",
     color: '#1a1a2e',
     description:
       'Sometimes the will of God is not a green light but a season of waiting. Trusting Him means accepting that His wisdom is better than your desired timeline.',
     questions: [
-      'Am I willing to wait for God’s timing even when it feels slow?',
+      "Am I willing to wait for God's timing even when it feels slow?",
       'Is this decision asking for faith beyond my current comfort?',
       'Am I trying to force clarity instead of resting in God?',
     ],
     scriptures: [
       {
-        ref: 'Proverbs 3:5–6',
+        ref: 'Proverbs 3:5\u20136',
         text: 'Trust in the Lord with all your heart, and do not lean on your own understanding. In all your ways acknowledge him, and he will make straight your paths.',
         insight: 'Trust and direction belong together.',
       },
       {
-        ref: 'Psalm 25:4–5',
+        ref: 'Psalm 25:4\u20135',
         text: 'Make me to know your ways, O Lord; teach me your paths... for you I wait all the day long.',
         insight: 'Biblical guidance includes patient waiting.',
       },
       {
-        ref: 'Isaiah 55:8–9',
+        ref: 'Isaiah 55:8\u20139',
         text: 'For my thoughts are not your thoughts, neither are your ways my ways, declares the Lord.',
-        insight: 'God’s wisdom exceeds your immediate logic.',
+        insight: "God's wisdom exceeds your immediate logic.",
       },
     ],
   },
@@ -304,7 +304,7 @@ export const SECTIONS = [
     questions: [
       'If God makes His will clear, am I ready to obey even at personal cost?',
       'Is there a step of obedience I already know but have delayed?',
-      'Am I seeking God’s glory or my own comfort?',
+      "Am I seeking God's glory or my own comfort?",
     ],
     scriptures: [
       {
@@ -315,10 +315,10 @@ export const SECTIONS = [
       {
         ref: '1 Thessalonians 4:3',
         text: 'For this is the will of God, your sanctification.',
-        insight: 'God’s will centers on holiness before strategy.',
+        insight: "God's will centers on holiness before strategy.",
       },
       {
-        ref: 'Hebrews 13:20–21',
+        ref: 'Hebrews 13:20\u201321',
         text: 'May the God of peace... equip you with everything good that you may do his will.',
         insight: 'God not only leads; He equips.',
       },
