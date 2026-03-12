@@ -34,25 +34,6 @@ npm run preview
 
 This site deploys automatically to **GitHub Pages** on every push to `main` via GitHub Actions.
 
-### Custom domain setup
-
-1. In your GitHub repo, go to **Settings → Pages**.
-2. Under **Source**, select **GitHub Actions**.
-3. Under **Custom domain**, enter `HisWillGuide.com`.
-4. Configure your DNS provider to point to GitHub Pages:
-   - **A records** (apex domain):
-     ```
-     185.199.108.153
-     185.199.109.153
-     185.199.110.153
-     185.199.111.153
-     ```
-   - **CNAME record** (www):
-     ```
-     www → systemslibrarian.github.io
-     ```
-5. Check **Enforce HTTPS** once DNS propagates.
-
 ## Tech stack
 
 - [React 18](https://react.dev)
