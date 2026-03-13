@@ -462,9 +462,9 @@ button, a, [role="checkbox"] {
 .prayer-panel blockquote,
 .closing-block blockquote {
   margin: 12px 0 10px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.15rem, 2.5vw, 1.8rem);
-  line-height: 1.45;
+  font-family: 'Merriweather', 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  line-height: 1.55;
   font-style: italic;
 }
 
@@ -553,7 +553,69 @@ button, a, [role="checkbox"] {
 .scripture-list,
 .detail-shell {
   display: grid;
-  gap: 12px;
+  gap: 16px;
+}
+
+/* Progress path tracker */
+.progress-path {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+  margin: 24px 0 8px;
+  padding: 16px 12px;
+}
+
+.progress-path__dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: transparent;
+  color: var(--muted-2);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 180ms ease;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.progress-path__dot:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: scale(1.1);
+}
+
+.progress-path__dot.engaged {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--accent-bg);
+}
+
+.progress-path__dot.completed {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--bg);
+}
+
+.progress-path__connector {
+  color: var(--muted-2);
+  font-size: 0.75rem;
+  margin: 0 2px;
+  opacity: 0.5;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.progress-path__connector.filled {
+  color: var(--gold);
+  opacity: 1;
 }
 
 .step-card {
@@ -587,6 +649,7 @@ button, a, [role="checkbox"] {
 .step-card__arrow {
   color: var(--muted-2);
   font-size: 1.2rem;
+  white-space: nowrap;
 }
 
 .prayer-panel,
@@ -735,11 +798,11 @@ button, a, [role="checkbox"] {
   grid-template-columns: 24px 1fr;
   gap: 12px;
   align-items: start;
-  padding: 14px;
+  padding: 16px;
   cursor: pointer;
   min-height: var(--min-tap);
   font-size: clamp(0.875rem, 2.5vw, 1rem);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .question-item.checked {
@@ -803,9 +866,9 @@ button, a, [role="checkbox"] {
   margin: 0;
   padding: 12px 0 0;
   border-top: 1px solid var(--border);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
-  line-height: 1.55;
+  font-family: 'Merriweather', 'Cormorant Garamond', serif;
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  line-height: 1.7;
 }
 
 .journal-textarea {
@@ -1350,9 +1413,10 @@ button, a, [role="checkbox"] {
   padding: 10px 16px;
   border-left: 3px solid var(--gold);
   color: var(--muted);
+  font-family: 'Merriweather', 'Cormorant Garamond', serif;
   font-style: italic;
   font-size: 0.9rem;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .summary-export-actions {

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { DAILY_VERSE, GUIDE_PILLARS, KEY_SCRIPTURES, PROMISES, SECTIONS } from './data';
 
 function useTheme() {
@@ -452,7 +452,7 @@ function SiteHeader({ theme, toggleTheme, menuOpen, setMenuOpen, onOpenFoundatio
   const navLinks = [
     { href: '#guide', label: 'Guide' },
     { href: '#foundation', label: 'Foundation', onClick: handleFoundation },
-    { href: '#prayer', label: 'Closing Prayer' },
+    { href: '#summary', label: 'Summary & Reflection' },
   ];
 
   return (
@@ -548,6 +548,30 @@ function Home({ onOpenSection, onOpenFoundation, onShowReset, theme, toggleTheme
           {engagedCount > 0 && (
             <p className="steps-summary">You have engaged with {engagedCount} of {SECTIONS.length} steps.</p>
           )}
+        </div>
+
+        <div className="progress-path" aria-label="Step progress">
+          {SECTIONS.map((section, i) => {
+            const sp = progress[section.id];
+            const engaged = sp.checkedCount > 0 || sp.hasJournal;
+            const completed = sp.checkedCount === sp.totalCount && sp.hasJournal;
+            return (
+              <Fragment key={section.id}>
+                <button
+                  className={`progress-path__dot ${completed ? 'completed' : engaged ? 'engaged' : ''}`}
+                  onClick={() => onOpenSection(section.id)}
+                  type="button"
+                  aria-label={`Step ${section.number}: ${section.title}${completed ? ' (completed)' : engaged ? ' (in progress)' : ''}`}
+                  title={section.title}
+                >
+                  {completed ? '\u2713' : section.number}
+                </button>
+                {i < SECTIONS.length - 1 && (
+                  <span className={`progress-path__connector ${engaged && completed ? 'filled' : ''}`} aria-hidden="true">&rarr;</span>
+                )}
+              </Fragment>
+            );
+          })}
         </div>
 
         <div className="step-list">
