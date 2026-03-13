@@ -124,7 +124,8 @@ function DecisionReminder() {
 
   return (
     <div className="decision-reminder">
-      <em>“{text}”</em>
+      <span className="decision-reminder__label">Decision being discerned:</span>
+      <em>{text}</em>
     </div>
   );
 }
@@ -544,6 +545,9 @@ function Home({ onOpenSection, onOpenFoundation, onShowReset, theme, toggleTheme
           <h2>Walk through the questions slowly.</h2>
           <p className="section-copy">
             Discerning God&rsquo;s will is rarely a single moment of clarity. Scripture shows it as a path walked step by step &mdash; with humility, prayer, community, and obedience.
+          </p>
+          <p className="section-copy">
+            Many decisions in life are not addressed by a direct command in Scripture. In those moments, believers are called to walk in wisdom, prayer, and obedience, trusting that God guides those who seek Him sincerely. &ldquo;The steps of a man are established by the Lord, when he delights in his way.&rdquo; &mdash; Psalm 37:23
           </p>
           {engagedCount > 0 && (
             <p className="steps-summary">You have engaged with {engagedCount} of {SECTIONS.length} steps.</p>

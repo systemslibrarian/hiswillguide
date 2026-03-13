@@ -112,8 +112,40 @@ export const SECTIONS = [
     ],
   },
   {
-    id: 'scripture',
+    id: 'heart',
     number: '02',
+    title: 'Are My Motives Aligned With God?',
+    subtitle: 'The Heart',
+    theme: "Confusion about God's will often begins with unexamined desires.",
+    color: '#3d4a6b',
+    description:
+      "Discernment requires honesty about the motives of the heart. Sometimes confusion about God\u2019s will is not caused by a lack of guidance, but by hidden desires shaping what we hope God will say.",
+    questions: [
+      "Am I pursuing God's glory, or my own comfort or reputation?",
+      'Would I still follow this path if no one noticed or applauded it?',
+      'Is fear, pride, or the need for control influencing my desire for this outcome?',
+    ],
+    scriptures: [
+      {
+        ref: 'Psalm 139:23\u201324',
+        text: 'Search me, O God, and know my heart! Try me and know my thoughts! And see if there be any grievous way in me, and lead me in the way everlasting!',
+        insight: 'Honest self-examination begins with inviting God to search us.',
+      },
+      {
+        ref: 'James 4:3',
+        text: 'You ask and do not receive, because you ask wrongly, to spend it on your passions.',
+        insight: 'Wrong motives can block answered prayer.',
+      },
+      {
+        ref: 'Matthew 6:33',
+        text: 'But seek first the kingdom of God and his righteousness, and all these things will be added to you.',
+        insight: 'Kingdom-first priorities reorder everything else.',
+      },
+    ],
+  },
+  {
+    id: 'scripture',
+    number: '03',
     title: 'What Does Scripture Already Say?',
     subtitle: 'The Clear Word',
     theme: "God's written Word is the first lens for every decision.",
@@ -151,7 +183,7 @@ export const SECTIONS = [
   },
   {
     id: 'prayer',
-    number: '03',
+    number: '04',
     title: 'Am I Asking God in Prayer?',
     subtitle: 'The Conversation',
     theme: 'God gives wisdom generously to those who ask.',
@@ -182,46 +214,14 @@ export const SECTIONS = [
     ],
   },
   {
-    id: 'heart',
-    number: '04',
-    title: 'Are My Motives Aligned With God?',
-    subtitle: 'The Heart',
-    theme: "Confusion about God's will often begins with unexamined desires.",
-    color: '#3d4a6b',
-    description:
-      "Discernment requires honesty about the motives of the heart. Sometimes confusion about God\u2019s will is not caused by a lack of guidance, but by hidden desires shaping what we hope God will say.",
-    questions: [
-      "Am I pursuing God's glory, or my own comfort or reputation?",
-      'Would I still follow this path if no one noticed or applauded it?',
-      'Is fear, pride, or the need for control influencing my desire for this outcome?',
-    ],
-    scriptures: [
-      {
-        ref: 'Psalm 139:23\u201324',
-        text: 'Search me, O God, and know my heart! Try me and know my thoughts! And see if there be any grievous way in me, and lead me in the way everlasting!',
-        insight: 'Honest self-examination begins with inviting God to search us.',
-      },
-      {
-        ref: 'James 4:3',
-        text: 'You ask and do not receive, because you ask wrongly, to spend it on your passions.',
-        insight: 'Wrong motives can block answered prayer.',
-      },
-      {
-        ref: 'Matthew 6:33',
-        text: 'But seek first the kingdom of God and his righteousness, and all these things will be added to you.',
-        insight: 'Kingdom-first priorities reorder everything else.',
-      },
-    ],
-  },
-  {
     id: 'spirit',
     number: '05',
-    title: 'Am I Walking by the Spirit?',
+    title: 'Am I Walking by the Spirit or by My Flesh?',
     subtitle: 'The Inner Guide',
     theme: 'Discernment is relational, not merely analytical.',
     color: '#5b3a6b',
     description:
-      'The Christian life is meant to be lived in step with the Holy Spirit. The more you walk with Him, the more your desires, reactions, and priorities are reshaped. Yet even sincere hearts can deceive \u2014 test every inner sense carefully.',
+      'The Christian life is meant to be lived in step with the Holy Spirit. The more you walk with Him, the more your desires, reactions, and priorities are reshaped. Yet even sincere hearts can deceive \u2014 test every inner sense carefully. The guidance of the Holy Spirit will never contradict Scripture and will produce the fruit of the Spirit: love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, and self-control (Galatians 5:22\u201323).',
     questions: [
       'Am I cultivating sensitivity to the Holy Spirit through daily obedience?',
       'Where do I already see God at work around me?',
@@ -281,12 +281,12 @@ export const SECTIONS = [
   {
     id: 'circumstances',
     number: '07',
-    title: 'What Are the Circumstances Saying?',
+    title: 'What Doors Is God Opening or Closing?',
     subtitle: 'The Open and Closed Doors',
     theme: 'God steers through both opportunity and restraint.',
     color: '#8b4513',
     description:
-      "Circumstances matter, but they are not the only voice. An open door is not always God's invitation, and a closed door is not always failure. Paul was actively prevented by the Holy Spirit from entering Asia and Bithynia, and then redirected to Macedonia through a vision \u2014 demonstrating that God's \u201cno\u201d is often part of a larger \u201cyes.\u201d Watch providence with humility.",
+      "Circumstances matter, but they are not the only voice. An open door is not always God's invitation, and a closed door is not always failure. Paul was actively prevented by the Holy Spirit from entering Asia and Bithynia, and then redirected to Macedonia through a vision \u2014 demonstrating that God's \u201cno\u201d is often part of a larger \u201cyes.\u201d Watch providence with humility. Circumstances can provide helpful guidance, but they should never override Scripture, wisdom, or godly counsel. As Paul writes, \u201cTest everything; hold fast what is good\u201d (1 Thessalonians 5:21).",
     questions: [
       'Are doors opening or closing as I move in this direction?',
       'Am I mistaking convenience for confirmation?',
