@@ -286,7 +286,7 @@ export const SECTIONS = [
     theme: 'God steers through both opportunity and restraint.',
     color: '#8b4513',
     description:
-      "Circumstances matter, but they are not the only voice. An open door is not always God's invitation, and a closed door is not always failure. Paul was actively prevented by the Holy Spirit from entering Asia and Bithynia, and then redirected to Macedonia through a vision \u2014 demonstrating that God's \u201cno\u201d is often part of a larger \u201cyes.\u201d Watch providence with humility. Circumstances can provide helpful guidance, but they should never override Scripture, wisdom, or godly counsel. As Paul writes, \u201cTest everything; hold fast what is good\u201d (1 Thessalonians 5:21).",
+      "Circumstances matter, but they are not the final authority. An open door is not always God's invitation, and a closed door is not always failure. Paul was actively prevented by the Holy Spirit from entering Asia and Bithynia, and then redirected to Macedonia through a vision \u2014 demonstrating that God's \u201cno\u201d is often part of a larger \u201cyes.\u201d Watch providence with humility. Circumstances can provide helpful guidance, but they should never override Scripture, wisdom, or godly counsel. As Paul writes, \u201cTest everything; hold fast what is good\u201d (1 Thessalonians 5:21).",
     questions: [
       'Are doors opening or closing as I move in this direction?',
       'Am I mistaking convenience for confirmation?',
