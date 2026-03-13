@@ -919,11 +919,13 @@ export default function App() {
   const navigateTo = (id) => {
     setHashRoute(id);
     setActiveSectionId(id);
+    progress._refresh();
   };
 
   const navigateHome = () => {
     setHashRoute(null);
     setActiveSectionId(null);
+    progress._refresh();
   };
 
   const handleReset = () => {
@@ -957,7 +959,6 @@ export default function App() {
           onBack={navigateHome}
           onNavigate={navigateTo}
           onViewSummary={() => navigateTo('summary')}
-          progress={progress}
           {...sharedProps}
         />
       );
