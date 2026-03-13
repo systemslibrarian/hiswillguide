@@ -20,3 +20,12 @@ scheduler
 source-map-js
 vite
 .package-lock.json
+
+# Python venv
+.venv/
+
+# Temp dev files
+fix.ipynb
+fix_app.py
+fix_orphan.py
+src/App.jsx.clean
