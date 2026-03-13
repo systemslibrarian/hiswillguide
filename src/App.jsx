@@ -930,16 +930,6 @@ function CompletionSummary({ onBack, onNavigate, onShowReset, theme, toggleTheme
 
         <PeaceReflection />
 
-        <section className="closing-block summary-benediction">
-          <div className="divider" />
-          <blockquote>
-            “Now may the God of peace… equip you with everything good that you may do his will,
-            working in us that which is pleasing in his sight, through Jesus Christ,
-            to whom be glory forever and ever. Amen.”
-          </blockquote>
-          <div className="daily-verse__ref">— Hebrews 13:20–21</div>
-        </section>
-
         <div className="summary-export-actions">
           <div className="eyebrow" style={{ textAlign: 'center', marginBottom: 12 }}>Save Your Reflections</div>
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -956,6 +946,17 @@ function CompletionSummary({ onBack, onNavigate, onShowReset, theme, toggleTheme
           <button className="ghost-button" onClick={onBack} type="button">← Back to Home</button>
           <button className="primary-button" onClick={onShowReset} type="button">Begin a New Decision</button>
         </div>
+
+        <section className="closing-block summary-benediction">
+          <div className="divider" />
+          <blockquote>
+            “Now may the God of peace… equip you with everything good that you may do his will,
+            working in us that which is pleasing in his sight, through Jesus Christ,
+            to whom be glory forever and ever. Amen.”
+          </blockquote>
+          <div className="daily-verse__ref">— Hebrews 13:20–21</div>
+        </section>
+
       </div>
     </>
   );
