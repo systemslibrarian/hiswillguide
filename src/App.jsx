@@ -124,7 +124,7 @@ function DecisionReminder() {
 
   return (
     <div className="decision-reminder">
-      <em>\u201c{text}\u201d</em>
+      <em>“{text}”</em>
     </div>
   );
 }
@@ -452,7 +452,7 @@ function SiteHeader({ theme, toggleTheme, menuOpen, setMenuOpen, onOpenFoundatio
   const navLinks = [
     { href: '#guide', label: 'Guide' },
     { href: '#foundation', label: 'Foundation', onClick: handleFoundation },
-    { href: '#prayer', label: 'Prayer' },
+    { href: '#prayer', label: 'Closing Prayer' },
   ];
 
   return (
@@ -520,9 +520,6 @@ function Home({ onOpenSection, onOpenFoundation, onShowReset, theme, toggleTheme
       <SiteHeader theme={theme} toggleTheme={toggleTheme} menuOpen={menuOpen} setMenuOpen={setMenuOpen} onOpenFoundation={onOpenFoundation} />
 
       <section className="hero hero--expanded" id="top">
-        <div className="hero-banner panel">
-          <img src="/banner.svg" alt="HisWillGuide banner with cross, open Bible, and Psalm 143:10 theme" />
-        </div>
         <div className="hero-mark">✦</div>
         <h1>Learn to discern God&rsquo;s&nbsp;will</h1>
         <p className="hero-subtitle">A calm, biblical guide rooted in surrender, Scripture, prayer, wise counsel, and obedient trust.</p>
@@ -619,7 +616,7 @@ function Foundation({ onBack, theme, toggleTheme, menuOpen, setMenuOpen, onOpenF
       <div className="detail-shell">
         <div className="detail-topbar">
           <button className="ghost-button" onClick={onBack} type="button">
-            \u2190 Home
+            ← Home
           </button>
         </div>
 
@@ -708,9 +705,16 @@ function Detail({ activeId, onBack, onNavigate, onViewSummary, theme, toggleThem
           <button className="ghost-button" onClick={onBack} type="button">
             ← Home
           </button>
-          <div className="dot-row" aria-hidden="true">
-            {SECTIONS.map((item) => (
-              <span key={item.id} className={`dot ${item.id === section.id ? 'active' : ''}`} />
+          <div className="dot-row" role="tablist" aria-label="Steps">
+            {SECTIONS.map((item, i) => (
+              <button
+                key={item.id}
+                className={`dot ${item.id === section.id ? 'active' : ''}`}
+                onClick={() => onNavigate(item.id)}
+                type="button"
+                aria-label={`Step ${i + 1}: ${item.title}`}
+                aria-current={item.id === section.id ? 'step' : undefined}
+              />
             ))}
           </div>
         </div>
@@ -749,22 +753,16 @@ function Detail({ activeId, onBack, onNavigate, onViewSummary, theme, toggleThem
           </button>
           {next ? (
             <button className="primary-button" onClick={() => onNavigate(next.id)} type="button">
-              Next Step \u2192
+              Next Step →
             </button>
           ) : (
             <button className="primary-button" onClick={onViewSummary} type="button">
-              View Summary \u2192
+              View Summary →
             </button>
           )}
         </div>
 
-        <section className="closing-block">
-          <div className="divider" />
-          <blockquote>
-            “Teach me to do your will, for you are my God; let your good Spirit lead me on level ground.”
-          </blockquote>
-          <div className="daily-verse__ref">— Psalm 143:10</div>
-        </section>
+
       </div>
     </>
   );
@@ -779,7 +777,7 @@ const PEACE_PROMPTS = [
 const PEACE_SCRIPTURE = {
   ref: 'Colossians 3:15',
   text: 'And let the peace of Christ rule in your hearts, to which indeed you were called in one body. And be thankful.',
-  insight: 'Peace is not passive comfort \u2014 it is an active ruling principle.',
+  insight: 'Peace is not passive comfort — it is an active ruling principle.',
 };
 
 function PeaceReflection() {
@@ -798,6 +796,8 @@ function PeaceReflection() {
 }
 
 function CompletionSummary({ onBack, onNavigate, onShowReset, theme, toggleTheme, menuOpen, setMenuOpen, progress, onOpenFoundation }) {
+  const [copied, setCopied] = useState(false);
+
   const decision = useMemo(() => {
     const d = window.localStorage.getItem('hiswillguide-decision-context');
     return d && d.trim() ? d.trim() : null;
@@ -820,6 +820,46 @@ function CompletionSummary({ onBack, onNavigate, onShowReset, theme, toggleTheme
 
   const skippedSteps = stepSummaries.filter((s) => s.skipped);
 
+  const buildReflectionText = useCallback(() => {
+    const dec = decision || 'Not specified';
+    let text = 'HisWillGuide.com \u2014 My Reflections\n';
+    text += 'Decision: ' + dec + '\n';
+    text += '\u2500'.repeat(40) + '\n';
+    for (const { section, checkedCount, totalCount, journalText, skipped } of stepSummaries) {
+      if (skipped) continue;
+      text += '\nStep ' + section.number + ': ' + section.title + '\n';
+      text += 'Reflections: ' + checkedCount + ' of ' + totalCount + '\n';
+      text += 'Journal: ' + (journalText || 'No entry') + '\n';
+    }
+    const peace = window.localStorage.getItem('hiswillguide-peace-reflection');
+    if (peace && peace.trim()) {
+      text += '\n' + '\u2500'.repeat(40) + '\n';
+      text += 'Final Reflection:\n' + peace.trim() + '\n';
+    }
+    return text;
+  }, [decision, stepSummaries]);
+
+  const handleCopy = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(buildReflectionText());
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch { /* clipboard may not be available */ }
+  }, [buildReflectionText]);
+
+  const handleSavePDF = useCallback(() => {
+    const text = buildReflectionText();
+    const w = window.open('', '_blank');
+    if (!w) return;
+    w.document.write('<!DOCTYPE html><html><head><title>My Reflections \u2014 HisWillGuide</title>' +
+      '<style>body{font-family:Georgia,serif;max-width:640px;margin:40px auto;padding:20px;line-height:1.7;color:#1e1a15;}' +
+      'h1{font-size:1.4rem;border-bottom:1px solid #ccc;padding-bottom:8px;}pre{white-space:pre-wrap;font-family:inherit;}</style></head>' +
+      '<body><h1>My Reflections \u2014 HisWillGuide.com</h1><pre>' +
+      text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') +
+      '</pre><script>window.print()<\/script></body></html>');
+    w.document.close();
+  }, [buildReflectionText]);
+
   return (
     <>
       <InAppBrowserBanner />
@@ -827,14 +867,14 @@ function CompletionSummary({ onBack, onNavigate, onShowReset, theme, toggleTheme
       <div className="detail-shell summary-shell">
         <div className="detail-topbar">
           <button className="ghost-button" onClick={onBack} type="button">
-            \u2190 Home
+            ← Home
           </button>
         </div>
 
         <div className="summary-header">
           <div className="eyebrow">Your Journey</div>
           <h1>Summary &amp; Reflection</h1>
-          {decision && <p className="summary-decision">\u201c{decision}\u201d</p>}
+          {decision && <p className="summary-decision">“{decision}”</p>}
         </div>
 
         {stepSummaries.filter((s) => !s.skipped).map(({ section, checkedCount, totalCount, journalText }) => (
@@ -843,12 +883,12 @@ function CompletionSummary({ onBack, onNavigate, onShowReset, theme, toggleTheme
               <span className="detail-number">{section.number}</span>
               <div>
                 <h3>{section.title}</h3>
-                <span className="step-progress-hint">{checkedCount} of {totalCount} reflections{journalText ? ' \u00b7 journal saved' : ''}</span>
+                <span className="step-progress-hint">{checkedCount} of {totalCount} reflections{journalText ? ' · journal saved' : ''}</span>
               </div>
             </div>
             {journalText && <blockquote className="summary-journal-quote">{journalText}</blockquote>}
             <button className="ghost-button" onClick={() => onNavigate(section.id)} type="button" style={{ marginTop: 8, fontSize: '0.9rem' }}>
-              Revisit step \u2192
+              Revisit step →
             </button>
           </div>
         ))}
@@ -865,15 +905,27 @@ function CompletionSummary({ onBack, onNavigate, onShowReset, theme, toggleTheme
         <section className="closing-block summary-benediction">
           <div className="divider" />
           <blockquote>
-            \u201cNow may the God of peace\u2026 equip you with everything good that you may do his will,
+            “Now may the God of peace… equip you with everything good that you may do his will,
             working in us that which is pleasing in his sight, through Jesus Christ,
-            to whom be glory forever and ever. Amen.\u201d
+            to whom be glory forever and ever. Amen.”
           </blockquote>
-          <div className="daily-verse__ref">\u2014 Hebrews 13:20\u201321</div>
+          <div className="daily-verse__ref">— Hebrews 13:20–21</div>
         </section>
 
+        <div className="summary-export-actions">
+          <div className="eyebrow" style={{ textAlign: 'center', marginBottom: 12 }}>Save Your Reflections</div>
+          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <button className="ghost-button" onClick={handleCopy} type="button">
+              {copied ? 'Copied \u2713' : 'Copy to Clipboard'}
+            </button>
+            <button className="ghost-button" onClick={handleSavePDF} type="button">
+              Save as PDF
+            </button>
+          </div>
+        </div>
+
         <div className="summary-actions">
-          <button className="ghost-button" onClick={onBack} type="button">\u2190 Back to Home</button>
+          <button className="ghost-button" onClick={onBack} type="button">← Back to Home</button>
           <button className="primary-button" onClick={onShowReset} type="button">Begin a New Decision</button>
         </div>
       </div>

@@ -3,11 +3,11 @@
   --bg: #0d0d0d;
   --bg-rgb: 13, 13, 13;
   --bg-soft: rgba(255, 255, 255, 0.04);
-  --bg-panel: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.03));
+  --bg-panel: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
   --border: rgba(255, 255, 255, 0.1);
   --text: #efefef;
-  --muted: rgba(239, 239, 239, 0.72);
-  --muted-2: rgba(239, 239, 239, 0.48);
+  --muted: rgba(239, 239, 239, 0.82);
+  --muted-2: rgba(239, 239, 239, 0.58);
   --gold: #c9a84c;
   --accent-bg: rgba(184, 134, 11, 0.16);
   --accent-border: rgba(184, 134, 11, 0.28);
@@ -414,6 +414,15 @@ button, a, [role="checkbox"] {
   color: var(--muted);
 }
 
+.pillar-card p {
+  color: var(--muted);
+  opacity: 1;
+}
+
+.foundation-section .section-copy {
+  color: var(--muted);
+}
+
 .hero-copy {
   width: min(680px, 100%);
   margin: 22px auto 0;
@@ -480,6 +489,11 @@ button, a, [role="checkbox"] {
   margin: 12px 0;
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: var(--text);
+}
+
+.section-heading .eyebrow {
+  color: var(--gold);
 }
 
 .key-scriptures,
@@ -523,7 +537,7 @@ button, a, [role="checkbox"] {
 
 .pillar-card__icon {
   font-size: 1.25rem;
-  color: var(--muted);
+  color: var(--gold);
 }
 
 .pillar-card h3,
@@ -531,6 +545,7 @@ button, a, [role="checkbox"] {
   margin: 14px 0 8px;
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1.15rem, 3vw, 1.4rem);
+  color: var(--text);
 }
 
 .step-list,
@@ -654,8 +669,12 @@ button, a, [role="checkbox"] {
   background: rgba(255,255,255,0.18);
   border: none;
   padding: 0;
+  margin: 0;
   cursor: pointer;
   transition: background 160ms ease, transform 160ms ease;
+  appearance: none;
+  -webkit-appearance: none;
+  outline-offset: 2px;
 }
 
 .dot:hover {
@@ -1334,6 +1353,13 @@ button, a, [role="checkbox"] {
   font-style: italic;
   font-size: 0.9rem;
   line-height: 1.6;
+}
+
+.summary-export-actions {
+  margin-top: 32px;
+  padding: 24px;
+  border: 1px dashed var(--border);
+  border-radius: 16px;
 }
 
 .summary-actions {
