@@ -1,6 +1,6 @@
 export const DAILY_VERSE = {
-  ref: '1 Thessalonians 5:18',
-  text: 'Give thanks in all circumstances; for this is the will of God in Christ Jesus for you.',
+  ref: 'Proverbs 3:5–6',
+  text: 'Trust in the Lord with all your heart and lean not on your own understanding; in all your ways acknowledge him, and he will make your paths straight.',
 };
 
 export const GUIDE_PILLARS = [
@@ -182,8 +182,40 @@ export const SECTIONS = [
     ],
   },
   {
-    id: 'spirit',
+    id: 'heart',
     number: '04',
+    title: 'Are My Motives Aligned With God?',
+    subtitle: 'The Heart',
+    theme: "Confusion about God's will often begins with unexamined desires.",
+    color: '#3d4a6b',
+    description:
+      "Discernment requires honesty about the motives of the heart. Sometimes confusion about God\u2019s will is not caused by a lack of guidance, but by hidden desires shaping what we hope God will say.",
+    questions: [
+      "Am I pursuing God's glory, or my own comfort or reputation?",
+      'Would I still follow this path if no one noticed or applauded it?',
+      'Is fear, pride, or the need for control influencing my desire for this outcome?',
+    ],
+    scriptures: [
+      {
+        ref: 'Psalm 139:23\u201324',
+        text: 'Search me, O God, and know my heart! Try me and know my thoughts! And see if there be any grievous way in me, and lead me in the way everlasting!',
+        insight: 'Honest self-examination begins with inviting God to search us.',
+      },
+      {
+        ref: 'James 4:3',
+        text: 'You ask and do not receive, because you ask wrongly, to spend it on your passions.',
+        insight: 'Wrong motives can block answered prayer.',
+      },
+      {
+        ref: 'Matthew 6:33',
+        text: 'But seek first the kingdom of God and his righteousness, and all these things will be added to you.',
+        insight: 'Kingdom-first priorities reorder everything else.',
+      },
+    ],
+  },
+  {
+    id: 'spirit',
+    number: '05',
     title: 'Am I Walking by the Spirit?',
     subtitle: 'The Inner Guide',
     theme: 'Discernment is relational, not merely analytical.',
@@ -221,7 +253,7 @@ export const SECTIONS = [
   },
   {
     id: 'counsel',
-    number: '05',
+    number: '06',
     title: 'Have I Sought Godly Counsel?',
     subtitle: 'The Community',
     theme: 'Discernment in Scripture is rarely isolated.',
@@ -248,13 +280,13 @@ export const SECTIONS = [
   },
   {
     id: 'circumstances',
-    number: '06',
+    number: '07',
     title: 'What Are the Circumstances Saying?',
     subtitle: 'The Open and Closed Doors',
     theme: 'God steers through both opportunity and restraint.',
     color: '#8b4513',
     description:
-      "Circumstances matter, but they are not the only voice. An open door is not always God's invitation \u2014 Paul found an open door in Troas but left because his spirit had no rest. A closed door is not always failure. Watch providence with humility.",
+      "Circumstances matter, but they are not the only voice. An open door is not always God's invitation, and a closed door is not always failure. Paul was actively prevented by the Holy Spirit from entering Asia and Bithynia, and then redirected to Macedonia through a vision \u2014 demonstrating that God's \u201cno\u201d is often part of a larger \u201cyes.\u201d Watch providence with humility.",
     questions: [
       'Are doors opening or closing as I move in this direction?',
       'Am I mistaking convenience for confirmation?',
@@ -272,20 +304,15 @@ export const SECTIONS = [
         insight: "God's purpose is stronger than our preference.",
       },
       {
-        ref: 'Isaiah 30:21',
-        text: 'Your ears shall hear a word behind you, saying, "This is the way, walk in it."',
-        insight: 'God is able to guide personally and clearly.',
-      },
-      {
-        ref: '2 Corinthians 2:12\u201313',
-        text: 'When I came to Troas to preach the gospel of Christ, even though a door was opened for me in the Lord, my spirit was not at rest. So I took leave of them and went on to Macedonia.',
-        insight: 'Opportunity alone is not enough \u2014 peace and leading matter more.',
+        ref: 'Acts 16:6\u201310',
+        text: 'They went through the region of Phrygia and Galatia, having been forbidden by the Holy Spirit to speak the word in Asia... they attempted to go into Bithynia, but the Spirit of Jesus did not allow them... And a vision appeared to Paul in the night: a man of Macedonia was standing there, urging him, "Come over to Macedonia and help us."',
+        insight: "Closed doors and divine redirection are part of God's active guidance.",
       },
     ],
   },
   {
     id: 'trust',
-    number: '07',
+    number: '08',
     title: 'Am I Willing to Trust and Wait?',
     subtitle: 'The Crisis of Belief',
     theme: "God's timing is part of God's will.",
@@ -317,7 +344,7 @@ export const SECTIONS = [
   },
   {
     id: 'obedience',
-    number: '08',
+    number: '09',
     title: 'Will I Obey What God Reveals?',
     subtitle: 'The Response',
     theme: 'Clarity is meant to lead to obedience.',
@@ -336,9 +363,9 @@ export const SECTIONS = [
         insight: 'Obedience is a love response to Christ.',
       },
       {
-        ref: '1 Thessalonians 4:3',
-        text: 'For this is the will of God, your sanctification.',
-        insight: "God's will centers on holiness before strategy.",
+        ref: 'James 1:22',
+        text: 'But be doers of the word, and not hearers only, deceiving yourselves.',
+        insight: 'Obedience is not optional for those who truly hear God.',
       },
       {
         ref: 'Hebrews 13:20\u201321',
@@ -347,4 +374,37 @@ export const SECTIONS = [
       },
     ],
   },
+  {
+    id: 'glory',
+    number: '10',
+    title: 'Does This Ultimately Honor God?',
+    subtitle: 'The Glory of God',
+    theme: 'The ultimate aim of the Christian life is the glory of God.',
+    color: '#9a7b4f',
+    description:
+      "The ultimate aim of the Christian life is the glory of God. Even after seeking Scripture, prayer, counsel, and wisdom, the final question remains: does this decision ultimately honor Christ and reflect His character? Discernment is not complete when we find what we want to do \u2014 it is complete when we confirm that what we plan to do is for Him.",
+    questions: [
+      "Am I genuinely motivated by God's glory here, or am I using spiritual language to justify what I already want?",
+      'Would this decision honor Christ if others saw it?',
+      'Does this choice point attention toward God or toward myself?',
+      'Could I pursue this path in a way that clearly glorifies God?',
+    ],
+    scriptures: [
+      {
+        ref: '1 Corinthians 10:31',
+        text: 'Whether you eat or drink, or whatever you do, do all to the glory of God.',
+        insight: 'Every decision, small or large, is an opportunity for doxology.',
+      },
+      {
+        ref: 'Colossians 3:17',
+        text: 'Whatever you do, in word or deed, do everything in the name of the Lord Jesus, giving thanks to God the Father through him.',
+        insight: 'Doing all in Christ\u2019s name means acting as His representative.',
+      },
+      {
+        ref: 'Matthew 5:16',
+        text: 'Let your light shine before others, so that they may see your good works and give glory to your Father who is in heaven.',
+        insight: 'Faithful choices point others toward God, not toward ourselves.',
+      },
+    ],
+  }
 ];

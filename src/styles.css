@@ -744,7 +744,7 @@ button, a, [role="checkbox"] {
 }
 
 .scripture-card {
-  padding: 0;
+  padding: 16px;
 }
 
 .scripture-card__toggle {
@@ -1170,4 +1170,210 @@ button, a, [role="checkbox"] {
     background: Highlight;
     border-color: Highlight;
   }
+}
+
+/* ═══════════════════════════════════════════
+   Decision Context Panel & Reminder
+   ═══════════════════════════════════════════ */
+
+.decision-context-panel {
+  text-align: left;
+}
+
+.decision-context-copy {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin: 0 0 12px;
+}
+
+.decision-reminder {
+  font-size: 0.92rem;
+  color: var(--muted);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+
+/* ═══════════════════════════════════════════
+   Step Progress Indicators
+   ═══════════════════════════════════════════ */
+
+.steps-summary {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.step-progress-hint {
+  font-size: 0.78rem;
+  color: var(--muted-2);
+  margin-top: 4px;
+}
+
+
+/* ═══════════════════════════════════════════
+   Hero Verse
+   ═══════════════════════════════════════════ */
+
+.hero-verse {
+  font-style: italic;
+  font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+  color: var(--muted);
+  max-width: 560px;
+  margin: 0 auto 20px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════════
+   New Decision Link
+   ═══════════════════════════════════════════ */
+
+.new-decision-link {
+  display: inline-block;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 8px 0;
+  margin-top: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.new-decision-link:hover {
+  color: var(--text);
+}
+
+/* ═══════════════════════════════════════════
+   Reset Modal
+   ═══════════════════════════════════════════ */
+
+.reset-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 100;
+  backdrop-filter: blur(2px);
+}
+
+.reset-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 101;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px 24px;
+  max-width: 420px;
+  width: calc(100% - 32px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.reset-modal h2 {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+}
+
+.reset-modal p {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin: 0 0 20px;
+  line-height: 1.6;
+}
+
+.reset-modal__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ═══════════════════════════════════════════
+   Foundation Sections
+   ═══════════════════════════════════════════ */
+
+.foundation-section {
+  margin-bottom: 48px;
+}
+
+.foundation-section:last-child {
+  margin-bottom: 0;
+}
+
+/* ═══════════════════════════════════════════
+   Completion Summary
+   ═══════════════════════════════════════════ */
+
+.summary-header {
+  text-align: center;
+  padding: 24px 0 32px;
+}
+
+.summary-header h1 {
+  margin: 8px 0 12px;
+}
+
+.summary-decision {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.summary-step-card {
+  margin-bottom: 16px;
+}
+
+.summary-step-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.summary-step-card__header h3 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+}
+
+.summary-journal-quote {
+  margin: 8px 0 0;
+  padding: 10px 16px;
+  border-left: 3px solid var(--gold);
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.summary-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  padding: 32px 0 16px;
+}
+
+.summary-benediction {
+  margin-top: 32px;
+}
+
+/* ═══════════════════════════════════════════
+   Peace Reflection
+   ═══════════════════════════════════════════ */
+
+.peace-reflection {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 24px;
+  margin: 32px 0;
+}
+
+.peace-reflection h3 {
+  margin: 8px 0 12px;
 }
