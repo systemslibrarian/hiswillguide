@@ -159,6 +159,27 @@ function ScriptureCard({ scripture }) {
   );
 }
 
+function Accordion({ label, defaultOpen = true, children }) {
+  const [open, setOpen] = useState(defaultOpen);
+
+  return (
+    <div>
+      <button
+        className="accordion-trigger"
+        onClick={() => setOpen((v) => !v)}
+        type="button"
+        aria-expanded={open}
+      >
+        <span>{label}</span>
+        <span className={`accordion-chevron ${open ? 'open' : ''}`} aria-hidden="true">▾</span>
+      </button>
+      <div className={`accordion-body ${open ? 'expanded' : 'collapsed'}`}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
 function ReflectionChecklist({ items, sectionId }) {
   const storageKey = `hiswillguide-checklist-${sectionId}`;
   const [checked, setChecked] = useState(() => {
@@ -247,8 +268,7 @@ function Journal({ section }) {
   const label = status === 'saving' ? 'Saving…' : status === 'saved' ? 'Saved ✓' : 'Save reflection';
 
   return (
-    <section className="panel journal-panel">
-      <div className="eyebrow">Reflection Journal</div>
+    <div className="journal-inner">
       <p className="journal-copy">Capture what stood out, what needs surrender, or what next step feels most faithful.</p>
       <textarea
         className="journal-textarea"
@@ -262,7 +282,7 @@ function Journal({ section }) {
           {label}
         </button>
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -593,9 +613,10 @@ function Home({ onOpenSection, onOpenFoundation, onShowReset, theme, toggleTheme
               >
                 <div className="step-card__number">{section.number}</div>
                 <div className="step-card__body">
+                  <div className="step-card__subtitle">{section.subtitle}</div>
                   <h3>{section.title}</h3>
                   <p>
-                    {section.subtitle} · {section.scriptures.length} scriptures · {section.questions.length} reflection prompts
+                    {section.scriptures.length} scriptures · {section.questions.length} reflection prompts
                   </p>
                   {engaged && (
                     <div className="step-progress-hint">
@@ -752,28 +773,34 @@ function Detail({ activeId, onBack, onNavigate, onViewSummary, theme, toggleThem
         <article className="detail-header" style={{ '--accent': section.color }}>
           <div className="detail-header__meta">
             <span className="detail-number">{section.number}</span>
-            <span className="eyebrow">{section.subtitle}</span>
+            <span className="detail-subtitle">{section.subtitle}</span>
           </div>
           <h1>{section.title}</h1>
           <p className="detail-theme">{section.theme}</p>
           <p className="detail-description">{section.description}</p>
         </article>
 
-        <section className="panel">
-          <div className="eyebrow">Reflection Questions</div>
-          <ReflectionChecklist items={section.questions} sectionId={section.id} />
+        <section className="detail-section-card">
+          <Accordion label="Reflection Questions" defaultOpen={true}>
+            <ReflectionChecklist items={section.questions} sectionId={section.id} />
+          </Accordion>
         </section>
 
-        <section className="panel">
-          <div className="eyebrow">Scriptures to Meditate On</div>
-          <div className="scripture-list">
-            {section.scriptures.map((scripture) => (
-              <ScriptureCard key={scripture.ref} scripture={scripture} />
-            ))}
-          </div>
+        <section className="detail-section-card">
+          <Accordion label="Scriptures to Meditate On" defaultOpen={true}>
+            <div className="scripture-list">
+              {section.scriptures.map((scripture) => (
+                <ScriptureCard key={scripture.ref} scripture={scripture} />
+              ))}
+            </div>
+          </Accordion>
         </section>
 
-        <Journal section={section} />
+        <section className="detail-section-card">
+          <Accordion label="Reflection Journal" defaultOpen={true}>
+            <Journal section={section} />
+          </Accordion>
+        </section>
 
         <div className="detail-nav">
           <button className="ghost-button" disabled={!previous} onClick={() => previous && onNavigate(previous.id)} type="button">
