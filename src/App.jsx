@@ -103,11 +103,11 @@ function DecisionContext() {
         maxLength={300}
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        placeholder="e.g., Whether to accept a new job offer\u2026"
+        placeholder="e.g., Whether to accept a new job offer…"
       />
       <div className="journal-actions">
         <button className="primary-button" onClick={save} type="button">
-          {saved ? 'Saved \u2713' : 'Save'}
+          {saved ? 'Saved ✓' : 'Save'}
         </button>
       </div>
     </section>
@@ -215,7 +215,7 @@ function Journal({ section }) {
     timerRef.current = setTimeout(() => {
       doSave(text);
       timerRef.current = null;
-    }, 1500);
+    }, 400);
   };
 
   const handleBlur = () => {
@@ -244,7 +244,7 @@ function Journal({ section }) {
     };
   }, [key]);
 
-  const label = status === 'saving' ? 'Saving\u2026' : status === 'saved' ? 'Saved \u2713' : 'Save reflection';
+  const label = status === 'saving' ? 'Saving…' : status === 'saved' ? 'Saved ✓' : 'Save reflection';
 
   return (
     <section className="panel journal-panel">
@@ -287,7 +287,7 @@ function AutoSaveTextarea({ storageKey, placeholder }) {
     timerRef.current = setTimeout(() => {
       doSave(text);
       timerRef.current = null;
-    }, 1500);
+    }, 400);
   };
 
   const handleBlur = () => {
@@ -316,7 +316,7 @@ function AutoSaveTextarea({ storageKey, placeholder }) {
     };
   }, [storageKey]);
 
-  const label = status === 'saving' ? 'Saving\u2026' : status === 'saved' ? 'Saved \u2713' : 'Save';
+  const label = status === 'saving' ? 'Saving…' : status === 'saved' ? 'Saved ✓' : 'Save';
 
   return (
     <>
@@ -355,7 +355,7 @@ function ResetModal({ open, onClose, onReset }) {
 
   const handleCopy = async () => {
     const decision = window.localStorage.getItem('hiswillguide-decision-context') || 'Not specified';
-    let text = 'HisWillGuide.com \u2014 My Reflections\nDecision: ' + decision + '\n';
+    let text = 'HisWillGuide.com — My Reflections\nDecision: ' + decision + '\n';
     for (const section of SECTIONS) {
       const journal = window.localStorage.getItem('hiswillguide-journal-' + section.id) || 'No entry';
       text += '\nStep ' + section.number + ': ' + section.title + '\n' + journal + '\n';
@@ -399,7 +399,7 @@ function ResetModal({ open, onClose, onReset }) {
         </p>
         <div className="reset-modal__actions">
           <button className="ghost-button" onClick={handleCopy} type="button">
-            {copied ? 'Copied \u2713' : 'Copy my reflections first'}
+            {copied ? 'Copied ✓' : 'Copy my reflections first'}
           </button>
           <button className="primary-button" onClick={handleReset} type="button">
             Clear and start fresh
@@ -568,7 +568,7 @@ function Home({ onOpenSection, onOpenFoundation, onShowReset, theme, toggleTheme
                   aria-label={`Step ${section.number}: ${section.title}${completed ? ' (completed)' : engaged ? ' (in progress)' : ''}`}
                   title={section.title}
                 >
-                  {completed ? '\u2713' : section.number}
+                  {completed ? '✓' : section.number}
                 </button>
                 {i < SECTIONS.length - 1 && (
                   <span className={`progress-path__connector ${engaged && completed ? 'filled' : ''}`} aria-hidden="true">&rarr;</span>
@@ -600,13 +600,13 @@ function Home({ onOpenSection, onOpenFoundation, onShowReset, theme, toggleTheme
                   {engaged && (
                     <div className="step-progress-hint">
                       {completed
-                        ? '\u2713 Completed'
+                        ? '✓ Completed'
                         : [
                             sp.checkedCount > 0 && `${sp.checkedCount} of ${sp.totalCount} reflections`,
                             sp.hasJournal && 'notes saved',
                           ]
                             .filter(Boolean)
-                            .join(' \u00b7 ')}
+                            .join(' · ')}
                     </div>
                   )}
                 </div>
@@ -850,9 +850,9 @@ function CompletionSummary({ onBack, onNavigate, onShowReset, theme, toggleTheme
 
   const buildReflectionText = useCallback(() => {
     const dec = decision || 'Not specified';
-    let text = 'HisWillGuide.com \u2014 My Reflections\n';
+    let text = 'HisWillGuide.com — My Reflections\n';
     text += 'Decision: ' + dec + '\n';
-    text += '\u2500'.repeat(40) + '\n';
+    text += '─'.repeat(40) + '\n';
     for (const { section, checkedCount, totalCount, journalText, skipped } of stepSummaries) {
       if (skipped) continue;
       text += '\nStep ' + section.number + ': ' + section.title + '\n';
@@ -861,7 +861,7 @@ function CompletionSummary({ onBack, onNavigate, onShowReset, theme, toggleTheme
     }
     const peace = window.localStorage.getItem('hiswillguide-peace-reflection');
     if (peace && peace.trim()) {
-      text += '\n' + '\u2500'.repeat(40) + '\n';
+      text += '\n' + '─'.repeat(40) + '\n';
       text += 'Final Reflection:\n' + peace.trim() + '\n';
     }
     return text;
@@ -879,10 +879,10 @@ function CompletionSummary({ onBack, onNavigate, onShowReset, theme, toggleTheme
     const text = buildReflectionText();
     const w = window.open('', '_blank');
     if (!w) return;
-    w.document.write('<!DOCTYPE html><html><head><title>My Reflections \u2014 HisWillGuide</title>' +
+    w.document.write('<!DOCTYPE html><html><head><title>My Reflections — HisWillGuide</title>' +
       '<style>body{font-family:Georgia,serif;max-width:640px;margin:40px auto;padding:20px;line-height:1.7;color:#1e1a15;}' +
       'h1{font-size:1.4rem;border-bottom:1px solid #ccc;padding-bottom:8px;}pre{white-space:pre-wrap;font-family:inherit;}</style></head>' +
-      '<body><h1>My Reflections \u2014 HisWillGuide.com</h1><pre>' +
+      '<body><h1>My Reflections — HisWillGuide.com</h1><pre>' +
       text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') +
       '</pre><script>window.print()<\/script></body></html>');
     w.document.close();
@@ -944,7 +944,7 @@ function CompletionSummary({ onBack, onNavigate, onShowReset, theme, toggleTheme
           <div className="eyebrow" style={{ textAlign: 'center', marginBottom: 12 }}>Save Your Reflections</div>
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
             <button className="ghost-button" onClick={handleCopy} type="button">
-              {copied ? 'Copied \u2713' : 'Copy to Clipboard'}
+              {copied ? 'Copied ✓' : 'Copy to Clipboard'}
             </button>
             <button className="ghost-button" onClick={handleSavePDF} type="button">
               Save as PDF
@@ -986,13 +986,13 @@ export default function App() {
   useEffect(() => {
     const sectionMatch = SECTIONS.find((item) => item.id === activeSectionId);
     if (activeSectionId === 'foundation') {
-      document.title = 'HisWillGuide.com \u2014 Foundation';
+      document.title = 'HisWillGuide.com — Foundation';
     } else if (activeSectionId === 'summary') {
-      document.title = 'HisWillGuide.com \u2014 Summary';
+      document.title = 'HisWillGuide.com — Summary';
     } else if (sectionMatch) {
-      document.title = 'HisWillGuide.com \u2014 ' + sectionMatch.title;
+      document.title = 'HisWillGuide.com — ' + sectionMatch.title;
     } else {
-      document.title = 'HisWillGuide.com \u2014 Discern God\u2019s Will Through Scripture, Prayer, and Wisdom';
+      document.title = 'HisWillGuide.com — Discern God’s Will Through Scripture, Prayer, and Wisdom';
     }
   }, [activeSectionId]);
 
