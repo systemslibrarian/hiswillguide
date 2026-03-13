@@ -169,18 +169,13 @@ function ScriptureCard({ scripture }) {
 
 function ReflectionChecklist({ items, sectionId }) {
   const storageKey = `hiswillguide-checklist-${sectionId}`;
-  const [checked, setChecked] = useState({});
-
-  useEffect(() => {
-    const raw = window.localStorage.getItem(storageKey);
+  const [checked, setChecked] = useState(() => {
+    const raw = window.localStorage.getItem(`hiswillguide-checklist-${sectionId}`);
     if (raw) {
-      try {
-        setChecked(JSON.parse(raw));
-      } catch {
-        setChecked({});
-      }
+      try { return JSON.parse(raw); } catch { /* ignore */ }
     }
-  }, [storageKey]);
+    return {};
+  });
 
   useEffect(() => {
     window.localStorage.setItem(storageKey, JSON.stringify(checked));
@@ -327,6 +322,14 @@ function AutoSaveTextarea({ storageKey, placeholder }) {
     doSave(valueRef.current);
   };
 
+  const handleManualSave = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+    doSave(valueRef.current);
+  };
+
   useEffect(() => {
     return () => {
       if (timerRef.current) {
@@ -349,7 +352,7 @@ function AutoSaveTextarea({ storageKey, placeholder }) {
         placeholder={placeholder}
       />
       <div className="journal-actions">
-        <button className="primary-button" onClick={handleBlur} type="button">
+        <button className="primary-button" onClick={handleManualSave} type="button">
           {label}
         </button>
       </div>
@@ -972,6 +975,7 @@ export default function App() {
     if (activeSectionId && VALID_SECTION_IDS.has(activeSectionId)) {
       return (
         <Detail
+          key={activeSectionId}
           activeId={activeSectionId}
           onBack={navigateHome}
           onNavigate={navigateTo}

@@ -746,6 +746,7 @@ button, a, [role="checkbox"] {
 .scripture-card {
   padding: 16px;
   cursor: pointer;
+  min-height: var(--min-tap);
 }
 
 .scripture-card:focus-visible {
