@@ -82,13 +82,8 @@ function useStepProgress() {
 
 function DecisionContext() {
   const key = 'hiswillguide-decision-context';
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(() => window.localStorage.getItem(key) || '');
   const [saved, setSaved] = useState(false);
-
-  useEffect(() => {
-    const existing = window.localStorage.getItem(key);
-    if (existing) setValue(existing);
-  }, []);
 
   const save = () => {
     window.localStorage.setItem(key, value);
@@ -120,12 +115,10 @@ function DecisionContext() {
 }
 
 function DecisionReminder() {
-  const [text, setText] = useState('');
-
-  useEffect(() => {
+  const [text] = useState(() => {
     const stored = window.localStorage.getItem('hiswillguide-decision-context');
-    if (stored && stored.trim()) setText(stored.trim());
-  }, []);
+    return stored ? stored.trim() : '';
+  });
 
   if (!text) return null;
 
@@ -201,18 +194,10 @@ function ReflectionChecklist({ items, sectionId }) {
 
 function Journal({ section }) {
   const key = `hiswillguide-journal-${section.id}`;
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(() => window.localStorage.getItem(key) || '');
   const [status, setStatus] = useState('idle');
   const timerRef = useRef(null);
   const valueRef = useRef(value);
-
-  useEffect(() => {
-    const existing = window.localStorage.getItem(key);
-    if (existing) {
-      setValue(existing);
-      valueRef.current = existing;
-    }
-  }, [key]);
 
   const doSave = useCallback((text) => {
     window.localStorage.setItem(key, text);
@@ -281,18 +266,10 @@ function Journal({ section }) {
 }
 
 function AutoSaveTextarea({ storageKey, placeholder }) {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(() => window.localStorage.getItem(storageKey) || '');
   const [status, setStatus] = useState('idle');
   const timerRef = useRef(null);
   const valueRef = useRef(value);
-
-  useEffect(() => {
-    const existing = window.localStorage.getItem(storageKey);
-    if (existing) {
-      setValue(existing);
-      valueRef.current = existing;
-    }
-  }, [storageKey]);
 
   const doSave = useCallback((text) => {
     window.localStorage.setItem(storageKey, text);
