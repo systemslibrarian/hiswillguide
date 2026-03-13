@@ -2,15 +2,13 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { DAILY_VERSE, GUIDE_PILLARS, KEY_SCRIPTURES, PROMISES, SECTIONS } from './data';
 
 function useTheme() {
-  const [theme, setTheme] = useState('dark');
-
-  useEffect(() => {
+  const [theme, setTheme] = useState(() => {
     const stored = window.localStorage.getItem('hiswillguide-theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const next = stored || (prefersDark ? 'dark' : 'light');
-    setTheme(next);
-    document.documentElement.dataset.theme = next;
-  }, []);
+    const initial = stored || (prefersDark ? 'dark' : 'light');
+    document.documentElement.dataset.theme = initial;
+    return initial;
+  });
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -910,6 +908,7 @@ export default function App() {
   const [activeSectionId, setActiveSectionId] = useState(() => parseHash());
   const [menuOpen, setMenuOpen] = useState(false);
   const [resetOpen, setResetOpen] = useState(false);
+  const [homeKey, setHomeKey] = useState(0);
   const { theme, toggleTheme } = useTheme();
   const progress = useStepProgress();
 
@@ -952,6 +951,7 @@ export default function App() {
 
   const handleReset = () => {
     progress._refresh();
+    setHomeKey((k) => k + 1);
     navigateHome();
   };
 
@@ -987,6 +987,7 @@ export default function App() {
     }
     return (
       <Home
+        key={homeKey}
         onOpenSection={navigateTo}
         onOpenFoundation={() => navigateTo('foundation')}
         onShowReset={() => setResetOpen(true)}
