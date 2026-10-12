@@ -22,7 +22,7 @@ His Will Guide is **Step 4 — Discern** in the Scripture & ministry path of [Pr
 - Elegant dark/light theme with toggle
 - Branded homepage for **HisWillGuide.com**
 - Four anchor sections: Scripture, Prayer, Wisdom, Discernment
-- Interactive 8-step guide for discerning God's will
+- Interactive 10-step guide for discerning God's will
 - Per-step reflection checklist saved in localStorage
 - Reflection journal saved in localStorage
 - Fully mobile-responsive (320px to desktop)
