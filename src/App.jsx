@@ -1089,6 +1089,9 @@ export default function App() {
       <div className="background-glow" />
       <main className="container">
         {renderView()}
+        <footer className="footer-note site-credit">
+          Part of <a href="https://prayersealed.org/">Prayer Sealed Ministries</a>
+        </footer>
       </main>
       <ResetModal
         open={resetOpen}

@@ -675,6 +675,22 @@ button, a, [role="checkbox"] {
   padding: 18px 12px;
 }
 
+/* Site-wide ministry credit; sits directly under the home footer note */
+.footer-note + .site-credit {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.site-credit a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.site-credit a:hover {
+  color: var(--text);
+}
+
 .detail-topbar {
   position: sticky;
   top: max(78px, calc(env(safe-area-inset-top) + 74px));
